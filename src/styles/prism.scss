@@ -1,0 +1,67 @@
+@import '../../node_modules/prismjs/themes/prism-coy.css';
+@import '../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css';
+
+:root {
+  --code-background: #fdfdfd;
+  --code-box-shadow: #dfdfdf;
+  --code-color: #000;
+  --code-operator-background: hsla(0, 0%, 100%, 0.5);
+}
+
+:root.scheme-dark {
+  --code-background: #2d2d2d;
+  --code-box-shadow: #505050;
+  --code-color: #ddd;
+  --code-operator-background: transparent;
+}
+
+.code-toolbar {
+  position: relative;
+
+  .toolbar {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .toolbar-item {
+    // language
+    background-color: var(--color-mid-tint);
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.9rem;
+    border-radius: 0 0 0 var(--border-radius);
+    padding: 0 0.5rem;
+    z-index: 1;
+    text-transform: capitalize;
+    color: var(--color-black);
+  }
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  position: relative;
+  font: var(--typography-code);
+
+  ::selection {
+    background: var(--color-accent-light);
+  }
+}
+
+pre[class*='language-'] > code {
+  color: var(--code-color);
+  background-color: var(--code-background);
+  box-shadow: -1px 0 0 0 #358ccb, 0 0 0 1px var(--code-box-shadow);
+  background-size: 3em calc(var(--line-height-s) * 2);
+}
+
+.token.entity,
+.token.operator,
+.token.url,
+.token.variable {
+  background: var(--code-operator-background);
+}

@@ -1,0 +1,31 @@
+<script lang="ts" context="module">
+  import { omit } from 'lodash-es';
+  import TextSection from '../molecules/TextSection.svelte';
+  import CardsListSection from '../molecules/CardsListSection.svelte';
+  import PostsFeedSection from '../molecules/PostsFeedSection.svelte';
+  import ItemsListSection from '../molecules/ItemsListSection.svelte';
+  import Link from '../atoms/Link.svelte';
+
+  const MAP = {
+    TextSection,
+    CardsListSection,
+    PostsFeedSection,
+    ItemsListSection,
+    Link
+  } as const;
+
+  export type ComponentType = keyof typeof MAP;
+
+  export type BaseComponent = {
+    type: ComponentType;
+  };
+</script>
+
+<script lang="ts">
+  export let type: ComponentType;
+  $: componentProps = omit($$props, ['type']);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  $: component = MAP[type] as any;
+</script>
+
+<svelte:component this={component} {...componentProps} />

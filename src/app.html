@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%sveltekit.assets%/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="%sveltekit.assets%/favicon/site.webmanifest" />
+    <meta name="color-scheme" content="light dark" />
+    <script type="text/javascript">
+      var prefersDarkScheme = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+      var switchValue = localStorage.getItem('isDarkScheme');
+      var isDarkScheme = switchValue ? switchValue === 'true' : prefersDarkScheme;
+      if (isDarkScheme) {
+        document.documentElement.classList.add('scheme-dark');
+      }
+    </script>
+    %sveltekit.head%
+  </head>
+  <body>
+    <div>%sveltekit.body%</div>
+  </body>
+</html>

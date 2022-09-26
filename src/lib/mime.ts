@@ -1,0 +1,22 @@
+export const Mime: Record<string, string> = {
+  html: 'text/html',
+  htm: 'text/html',
+  shtml: 'text/html',
+  css: 'text/css',
+  xml: 'text/xml',
+  gif: 'text/xml',
+  js: 'application/x-javascript',
+  rss: 'application/rss+xml',
+  txt: 'text/plain',
+  jpeg: 'image/jpeg',
+  jpg: 'image/jpeg',
+  webp: 'image/webp',
+  png: 'image/png',
+  tif: 'image/tiff',
+  tiff: 'image/tiff',
+  wbmp: 'image/vnd.wap.wbmp',
+  icon: 'image/x-icon',
+  jng: 'image/x-jng',
+  bmp: 'image/x-ms-bmp',
+  svg: 'image/svg+xml'
+};

@@ -1,0 +1,68 @@
+:root {
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-background: var(--color-white);
+  --color-text-primary: #868686;
+  --color-text-accent: var(--color-black);
+  --color-header: #5a5a5a;
+  --color-sub-header: #747373;
+  --color-mid-tint: #cfcfcf;
+  --color-tint: #ebf2f6;
+  --color-accent: #0092bf;
+  --color-accent-light: rgba(0, 146, 191, 0.5);
+  --color-accent-dark: #00627d;
+
+  --space: 8px;
+  --border-radius: 4px;
+
+  --line-height-xxs: 17px;
+  --line-height-xs: 22px;
+  --line-height-s: 28px;
+  --line-height: 35px;
+  --line-height-l: 40px;
+  --line-height-xl: 45px;
+  --line-height-xxl: 50px;
+
+  --font-size-xs: 10px;
+  --font-size-s: 16px;
+  --font-size: 20px;
+  --font-size-l: 24px;
+  --font-size-xl: 30px;
+  --font-size-xxl: 40px;
+
+  --font-family-regular: Museo Sans, Helvetica Neue, Segoe UI, Tahoma, sans-serif;
+
+  --typography-code: var(--font-size-s) / var(--line-height-s) var(--font-family-regular);
+  --typography-body: var(--font-size) / var(--line-height) var(--font-family-regular);
+  --typography-body-small: var(--font-size-s) / var(--line-height-s) var(--font-family-regular);
+  --typography-body-small-tight: var(--font-size-s) / var(--line-height-xs) var(--font-family-regular);
+  --typography-body-xsmall: var(--font-size-xs) / var(--line-height-xxs) var(--font-family-regular);
+  --typography-body-cv: var(--font-size-s) / var(--line-height-xs) var(--font-family-regular);
+  --typography-body-cv-strong: 600 var(--font-size-s) / var(--line-height-xs) var(--font-family-regular);
+  --typography-title-s: 600 var(--font-size-l) / var(--line-height-l) var(--font-family-regular);
+  --typography-title: 600 var(--font-size-xl) / var(--line-height-xl) var(--font-family-regular);
+  --typography-title-l: 600 var(--font-size-xxl) / var(--line-height-xxl) var(--font-family-regular);
+  --typography-title-thin-s: var(--font-size-l) / var(--line-height-l) var(--font-family-regular);
+  --typography-title-thin: var(--font-size-xl) / var(--line-height-xl) var(--font-family-regular);
+
+  --transition: 0.25s ease-in-out;
+}
+
+:root.scheme-dark {
+  @media screen {
+    --color-background: #2f2f31;
+    --color-text-primary: #ddd;
+    --color-text-accent: var(--color-white);
+    --color-header: var(--color-white);
+    --color-sub-header: #eee;
+    --color-tint: #676b6d;
+    --color-accent-light: rgb(0, 146, 191, 0.5);
+    --color-accent-dark: #676b6d;
+  }
+}
+
+@custom-media --laptop (max-width: 1280px);
+@custom-media --tablet (max-width: 1000px);
+@custom-media --big-phone (max-width: 700px);
+@custom-media --phone (max-width: 480px);

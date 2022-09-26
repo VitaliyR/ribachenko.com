@@ -1,0 +1,78 @@
+<script lang="ts">
+  import { browser } from '$app/env';
+  import { Mime } from '$lib/mime';
+  import { EventSchemeChangedName, type EventSchemeChanged, isEnabledDarkScheme } from '$lib/scheme';
+
+  export let url: string;
+  export let urlDark: string | undefined = undefined;
+  export let alt: string | undefined = undefined;
+  export let hasRetina = false;
+  export let hasWebp = true;
+
+  let className = '';
+  export { className as class };
+
+  // if has darkUrl - wait for client to determinate which picture to load
+  let isVisible = !urlDark;
+  let isDarkMode = false;
+
+  if (browser) {
+    isDarkMode = isEnabledDarkScheme();
+    document.documentElement.addEventListener(EventSchemeChangedName, (e: EventSchemeChanged) => {
+      isDarkMode = e.detail.isDark;
+    });
+    isVisible = true;
+  }
+
+  const REPLACE_REGEXP = /^\/assets\//;
+  let srcSets: Array<{
+    srcSet: string;
+    isDark: boolean;
+    type: string;
+  }> = [];
+  let imgBaseUrl: string;
+  let imgBaseUrlExt: string;
+
+  $: {
+    const [[baseUrl, baseUrlExt], [baseDarkUrl, baseDarkUrlExt]] = [url, urlDark].map((curUrl) => {
+      const parts = curUrl?.replace(REPLACE_REGEXP, '/g/').split('.') ?? [];
+      return [parts.slice(0, -1).join('.'), parts[parts.length - 1]];
+    });
+
+    imgBaseUrl = isDarkMode ? baseDarkUrl || baseUrl : baseUrl;
+    imgBaseUrlExt = isDarkMode ? baseDarkUrlExt || baseUrlExt : baseUrlExt;
+
+    srcSets = [
+      [baseUrl, baseUrlExt, false],
+      hasWebp && baseUrlExt !== 'webp' && [baseUrl, 'webp', false],
+      baseDarkUrl && [baseDarkUrl, baseDarkUrlExt, true],
+      hasWebp && baseDarkUrl && baseDarkUrlExt !== 'webp' && [baseDarkUrl, 'webp', true]
+    ]
+      .filter(Boolean)
+      .map((opts) => {
+        const [url, ext, isDark] = opts as [string, string, boolean];
+        const srcSet = hasRetina ? `${url}@2x.${ext} 2x, ${url}.${ext} 1x` : `${url}.${ext}`;
+        return {
+          srcSet,
+          isDark,
+          type: Mime[ext]
+        };
+      });
+  }
+</script>
+
+{#if isVisible}
+  <picture>
+    {#each srcSets as srcSetObj}
+      {@const isMode = srcSetObj.isDark === isDarkMode}
+      <source srcset={srcSetObj.srcSet} data-scheme-dark={srcSetObj.isDark} type={srcSetObj.type} media={isMode ? undefined : 'min-width: Infinity'} />
+    {/each}
+    <img class={className} src={`${imgBaseUrl}.${imgBaseUrlExt}`} {alt} itemprop="image" />
+  </picture>
+{/if}
+
+<style lang="scss">
+  picture {
+    display: flex;
+  }
+</style>

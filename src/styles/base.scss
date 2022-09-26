@@ -1,0 +1,32 @@
+@import './prism';
+@import './fonts';
+@import './components';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  display: block;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  font: var(--typography-body);
+
+  @media (--laptop) {
+    font: var(--typography-body-small);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}

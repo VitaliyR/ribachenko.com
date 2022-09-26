@@ -1,0 +1,35 @@
+name: Deploy app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check:
+    name: Deploy server
+    runs-on: self-hosted
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Install packages
+        run: npm install
+
+      - name: Build app
+        run: NODE_ENV=production CONFIG_ENV=prod npm run build
+
+      - name: Replace app
+        run: cd ../ && rm -rf build && cp -r ${{ github.event.repository.name }} build && rm -rf latest && ln -s build latest
+
+      - name: Restart SSR
+        run: pm2 restart ribachenko.com
+
+      - name: Wait 5s
+        run: sleep 5
+
+      - name: Generate PDF
+        run: cd ${{ github.event.repository.name }} && npm run get:pdf
