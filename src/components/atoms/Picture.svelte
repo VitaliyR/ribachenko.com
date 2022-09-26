@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { Mime } from '$lib/mime';
   import { EventSchemeChangedName, type EventSchemeChanged, isEnabledDarkScheme } from '$lib/scheme';
 

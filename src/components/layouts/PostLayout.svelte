@@ -1,6 +1,6 @@
 <script lang="ts">
   import { toPairs } from 'lodash-es';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { getContext } from 'svelte';
   import dayjs from 'dayjs';
   import { META_CONTEXT, type MetaContext } from '$lib/context';

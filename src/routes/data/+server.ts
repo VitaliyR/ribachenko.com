@@ -1,4 +1,4 @@
-import type { RequestEvent } from '@sveltejs/kit';
+import { json, type RequestEvent } from '@sveltejs/kit';
 import { loadAllPages } from '$lib/get-pages';
 
 export async function GET({ url }: RequestEvent) {
@@ -21,14 +21,10 @@ export async function GET({ url }: RequestEvent) {
       }
     };
 
-    return {
-      body: result
-    };
+    return json(result);
   } catch (e) {
     console.log(e);
   }
 
-  return {
-    status: 404
-  };
+  return new Response(undefined, { status: 404 });
 }

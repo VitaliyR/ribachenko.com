@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { isSupportWebP } from '../lib/utils';
 
   if (browser) {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
   import { isEnabledDarkScheme, toggleDarkScheme } from '$lib/scheme';
   import classNames from 'classnames';
   import Icon from './Icon.svelte';

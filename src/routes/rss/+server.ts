@@ -1,6 +1,6 @@
 import { pickBy, toPairs } from 'lodash-es';
-import siteConfig from '../data/config.json';
-import config from '../config';
+import siteConfig from '../../data/config.json';
+import config from '../../config';
 import { getPostDescription } from '$lib/utils';
 import { loadAllPages } from '$lib/get-pages';
 
@@ -46,10 +46,9 @@ export async function GET() {
   </rss>
   `.trim();
 
-  return {
-    body: contents,
+  return new Response(contents, {
     headers: {
       'Content-Type': 'text/xml'
     }
-  };
+  });
 }
