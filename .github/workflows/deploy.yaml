@@ -9,18 +9,22 @@ jobs:
   check:
     name: Deploy server
     runs-on: self-hosted
-    env:
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
 
       - name: Install packages
-        run: npm install
+        run: source ~/.nvm/nvm.sh && nvm use 16 && npm install
+
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo MAPBOX_KEY=${{ secrets.MAPBOX_KEY }} >> .env
+          cat .env
 
       - name: Build app
-        run: NODE_ENV=production CONFIG_ENV=prod npm run build
+        run: source ~/.nvm/nvm.sh && nvm use 16 && NODE_ENV=production CONFIG_ENV=prod npm run build
 
       - name: Replace app
         run: cd ../ && rm -rf build && cp -r ${{ github.event.repository.name }} build && rm -rf latest && ln -s build latest

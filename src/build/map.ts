@@ -4,7 +4,7 @@ import fs from 'fs';
 import dotenv from 'dotenv';
 import sharp from 'sharp';
 
-import siteConfig from '../data/config.json';
+import siteConfig from '../data/config.json' assert { type: 'json' };
 
 dotenv.config();
 
