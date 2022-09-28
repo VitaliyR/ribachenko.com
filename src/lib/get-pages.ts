@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import frontmatter, { type FrontMatterResult } from 'front-matter';
-import { parseMarkdown } from './utils';
+import { parseMarkdown } from './md-utils';
 import { getFiles } from './utils-server.mjs';
 
 const DATA_DIR = path.resolve('src/data/');

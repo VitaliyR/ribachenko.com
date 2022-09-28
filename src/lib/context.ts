@@ -4,6 +4,3 @@ export const META_CONTEXT = 'meta';
 export type MetaContext = {
   pages: Record<string, Page>;
 };
-
-// need to have default export, svelte/vite issue?
-export default 1;

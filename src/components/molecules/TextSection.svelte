@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { parseMarkdown } from '../../lib/utils';
+  import { parseMarkdown } from '../../lib/md-utils';
   import type { BaseComponent } from '../atoms/Component.svelte';
   import Section from '../molecules/Section.svelte';
 

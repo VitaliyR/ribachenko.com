@@ -3,7 +3,7 @@
   import LandingHeader from '../molecules/LandingHeader.svelte';
   import Component from '../atoms/Component.svelte';
   import SEO from '../atoms/SEO.svelte';
-  import { rehighlightCode } from '$lib/utils';
+  import { rehighlightCode } from '$lib/md-utils';
   import { afterUpdate } from 'svelte';
 
   let className = '';

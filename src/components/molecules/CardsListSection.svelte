@@ -71,8 +71,8 @@
     @media print {
       display: grid;
       grid-template:
-        "title title"
-        "image description";
+        'title title'
+        'image description';
       grid-template-columns: 1fr 1fr;
       margin-bottom: calc(var(--space) * 2);
     }
@@ -142,6 +142,10 @@
       top: 0;
       bottom: 0;
       background: rgba(0, 0, 0, 0.5);
+
+      @media print {
+        display: none;
+      }
     }
 
     &::after {
@@ -157,6 +161,10 @@
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%);
+
+      @media print {
+        display: none;
+      }
     }
 
     &::before,

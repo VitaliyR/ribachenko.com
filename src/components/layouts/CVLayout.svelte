@@ -43,7 +43,7 @@
   import Link from '../atoms/Link.svelte';
   import CVDownload from '../atoms/CVDownload.svelte';
   import ThemeButton from '../atoms/ThemeButton.svelte';
-  import { parseMarkdown } from '$lib/utils';
+  import { parseMarkdown } from '$lib/md-utils';
   import siteConfig from '../../data/config.json';
 
   export let slug: string;

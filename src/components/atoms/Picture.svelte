@@ -66,8 +66,9 @@
 {#if isVisible}
   <picture>
     {#each srcSets as srcSetObj}
-      {@const isMode = (srcSetObj.isDark === isDarkMode)}
-      <source srcset={srcSetObj.srcSet} data-scheme-dark={srcSetObj.isDark} type={srcSetObj.type} media={isMode ? undefined : (srcSetObj.isDark ? 'min-width: Infinity' : 'print')} />
+      {@const isMode = srcSetObj.isDark === isDarkMode}
+      {@const media = srcSetObj.isDark ? 'min-width: Infinity' : 'print'}
+      <source srcset={srcSetObj.srcSet} type={srcSetObj.type} media={isMode ? undefined : media} />
     {/each}
     <img class={className} src={`${imgBaseUrl}.${imgBaseUrlExt}`} {alt} itemprop="image" />
   </picture>
