@@ -39,7 +39,9 @@
   --typography-body-small-tight: var(--font-size-s) / var(--line-height-xs) var(--font-family-regular);
   --typography-body-xsmall: var(--font-size-xs) / var(--line-height-xxs) var(--font-family-regular);
   --typography-body-cv: var(--font-size-s) / var(--line-height-xs) var(--font-family-regular);
+  --typography-body-cv-print: 14px / 20px var(--font-family-regular);
   --typography-body-cv-strong: 600 var(--font-size-s) / var(--line-height-xs) var(--font-family-regular);
+  --typography-body-cv-strong-print: 600 14px / 20px var(--font-family-regular);
   --typography-title-s: 600 var(--font-size-l) / var(--line-height-l) var(--font-family-regular);
   --typography-title: 600 var(--font-size-xl) / var(--line-height-xl) var(--font-family-regular);
   --typography-title-l: 600 var(--font-size-xxl) / var(--line-height-xxl) var(--font-family-regular);

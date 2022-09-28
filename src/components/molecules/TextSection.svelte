@@ -9,6 +9,6 @@
   export let titleSlot: BaseComponent | undefined = undefined;
 </script>
 
-<Section {hasBorder} {title} {titleSlot}>
+<Section {hasBorder} {title} {titleSlot} class="links-print-url">
   {@html parseMarkdown(text)}
 </Section>

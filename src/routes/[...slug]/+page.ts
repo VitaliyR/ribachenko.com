@@ -12,26 +12,22 @@ const parseDates = (obj: any) =>
 export async function load({ fetch, params }: LoadEvent) {
   const { slug } = params;
 
-  try {
-    const response = await fetch(`/data?slug=${encodeURIComponent(slug ?? '')}`);
-    const data = await response.json();
+  const response = await fetch(`/data?slug=${encodeURIComponent(slug ?? '')}`);
+  const data = await response.json();
 
-    if (!data.attributes && data.__meta.pages['404.md']) {
-      // means no page
-      throw redirect(302, '/404');
-    }
-
-    return {
-      data: parseDates(data.attributes),
-      body: data.body,
-      meta: {
-        pages: parseDates(data.__meta.pages)
-      },
-      slug
-    };
-  } catch (e) {
-    console.log(e);
+  if (!data.attributes && data.__meta.pages['404.md']) {
+    // means no page
+    throw redirect(302, '/404');
   }
+
+  return {
+    data: parseDates(data.attributes),
+    body: data.body,
+    meta: {
+      pages: parseDates(data.__meta.pages)
+    },
+    slug
+  };
 
   return {};
 }

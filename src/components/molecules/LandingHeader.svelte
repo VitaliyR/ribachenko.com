@@ -88,6 +88,10 @@
       min-height: auto;
     }
 
+    @media print {
+      padding: 0;
+    }
+
     &::before {
       content: '';
       position: absolute;
@@ -129,6 +133,10 @@
     &__bottom {
       @media (--tablet) {
         margin-top: calc(var(--space) * 2);
+      }
+
+      @media print {
+        display: none;
       }
     }
 

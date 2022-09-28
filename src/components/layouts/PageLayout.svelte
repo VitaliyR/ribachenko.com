@@ -43,10 +43,14 @@
     max-width: 1000px;
     padding: calc(var(--space) * 6);
 
-    @media (--tablet) {
+    @media (--tablet), print {
       margin: 0;
       max-width: none;
       padding: calc(var(--space) * 3);
+    }
+
+    @media print {
+      padding: 0 calc(var(--space) * 6);
     }
   }
 
@@ -59,5 +63,9 @@
   .footer {
     text-align: center;
     font: var(--typography-body-xsmall);
+
+    @media print {
+      display: none;
+    }
   }
 </style>

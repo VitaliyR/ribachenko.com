@@ -32,4 +32,4 @@ jobs:
         run: sleep 5
 
       - name: Generate PDF
-        run: cd ${{ github.event.repository.name }} && npm run get:pdf
+        run: cd ${{ github.event.repository.name }} && npm run get:pdf && cp ./static/cv.pdf ../latest/build/static

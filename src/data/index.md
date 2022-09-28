@@ -49,4 +49,5 @@ components:
       url: /rss
       newTab: true
       isPlain: true
+      isHiddenPrint: true
 ---

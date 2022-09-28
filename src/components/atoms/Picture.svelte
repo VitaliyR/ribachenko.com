@@ -32,6 +32,7 @@
   }> = [];
   let imgBaseUrl: string;
   let imgBaseUrlExt: string;
+  let isPrint = false;
 
   $: {
     const [[baseUrl, baseUrlExt], [baseDarkUrl, baseDarkUrlExt]] = [url, urlDark].map((curUrl) => {
@@ -39,8 +40,9 @@
       return [parts.slice(0, -1).join('.'), parts[parts.length - 1]];
     });
 
-    imgBaseUrl = isDarkMode ? baseDarkUrl || baseUrl : baseUrl;
-    imgBaseUrlExt = isDarkMode ? baseDarkUrlExt || baseUrlExt : baseUrlExt;
+    isPrint = browser ? window.matchMedia('print').matches : false;
+    imgBaseUrl = isDarkMode && !isPrint ? baseDarkUrl || baseUrl : baseUrl;
+    imgBaseUrlExt = isDarkMode && !isPrint ? baseDarkUrlExt || baseUrlExt : baseUrlExt;
 
     srcSets = [
       [baseUrl, baseUrlExt, false],
@@ -64,8 +66,8 @@
 {#if isVisible}
   <picture>
     {#each srcSets as srcSetObj}
-      {@const isMode = srcSetObj.isDark === isDarkMode}
-      <source srcset={srcSetObj.srcSet} data-scheme-dark={srcSetObj.isDark} type={srcSetObj.type} media={isMode ? undefined : 'min-width: Infinity'} />
+      {@const isMode = (srcSetObj.isDark === isDarkMode)}
+      <source srcset={srcSetObj.srcSet} data-scheme-dark={srcSetObj.isDark} type={srcSetObj.type} media={isMode ? undefined : (srcSetObj.isDark ? 'min-width: Infinity' : 'print')} />
     {/each}
     <img class={className} src={`${imgBaseUrl}.${imgBaseUrlExt}`} {alt} itemprop="image" />
   </picture>

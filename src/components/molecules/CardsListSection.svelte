@@ -31,18 +31,16 @@
           href={card.href}
           class="wrapper"
         >
-          <article>
-            <header>
-              <div class="image-container" data-text="View">
-                <Picture alt={card.title} url={card.image} urlDark={card.imageDark} class="image" />
-              </div>
-              <div class="header">
-                <h3>{card.title}</h3>
-                {#if card.date}
-                  <span class="date">{dayjs(card.date).format('DD MMM YY')}</span>
-                {/if}
-              </div>
-            </header>
+          <article class="item-container">
+            <div class="image-container" data-text="View">
+              <Picture alt={card.title} url={card.image} urlDark={card.imageDark} class="image" />
+            </div>
+            <div class="header">
+              <h3>{card.title}</h3>
+              {#if card.date}
+                <span class="date">{dayjs(card.date).format('DD MMM YY')}</span>
+              {/if}
+            </div>
             <p class="description">{card.description}</p>
           </article>
         </a>
@@ -61,6 +59,22 @@
     @media (--phone) {
       grid-template-columns: 1fr;
       margin-bottom: var(--space);
+    }
+
+    @media print {
+      display: block;
+      margin-bottom: var(--space);
+    }
+  }
+
+  .item-container {
+    @media print {
+      display: grid;
+      grid-template:
+        "title title"
+        "image description";
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: calc(var(--space) * 2);
     }
   }
 
@@ -86,9 +100,15 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    grid-area: title;
 
     h3 {
       margin: 0;
+    }
+
+    @media print {
+      text-align: center;
+      margin-bottom: calc(var(--space) * 2);
     }
   }
 
@@ -107,6 +127,11 @@
     min-height: 170px;
     display: flex;
     flex-flow: column;
+    grid-area: image;
+
+    @media print {
+      min-height: unset;
+    }
 
     &::before {
       content: '';
@@ -151,5 +176,11 @@
 
   .description {
     font: var(--typography-body-small);
+    grid-area: description;
+
+    @media print {
+      margin-left: calc(var(--space) * 2);
+      align-self: center;
+    }
   }
 </style>

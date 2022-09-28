@@ -24,18 +24,6 @@
     color: var(--color-text-accent);
   }
 
-  &--print-url {
-    @media print {
-      font-weight: 300;
-      border-bottom: 0;
-      color: var(--color-accent-dark);
-
-      &::after {
-        content: ' (' attr(href) ')';
-      }
-    }
-  }
-
   &:hover {
     outline: none;
     color: var(--color-accent);
@@ -45,17 +33,30 @@
   }
 }
 
+.links-print-url .link,
+.link--print-url {
+  @media print {
+    font-weight: 300;
+    border-bottom: 0;
+    color: var(--color-accent-dark);
+
+    &::after {
+      content: ' (' attr(href) ')';
+    }
+  }
+}
+
 .u-faded {
   opacity: 0;
 }
 
 .u-hidden {
-  display: none !important;
+  display: none;
 }
 
 .u-hide-tablet {
   @media (--tablet) {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -63,6 +64,6 @@
   display: none;
 
   @media (--tablet) {
-    display: block !important;
+    display: block;
   }
 }

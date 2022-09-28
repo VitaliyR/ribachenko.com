@@ -99,7 +99,7 @@
     </footer>
     <aside class="next-prev-container">
       {#each nextPrevPosts as post, index}
-        <a class="next-prev-card link link--plain" class:next-prev-card--right={index === 1} href={`/${post[0].replace(/\.md$/, '')}`}>
+        <a class="next-prev-card link link--plain link--print-url" class:next-prev-card--right={index === 1} href={`/${post[0].replace(/\.md$/, '')}`}>
           {#if post[1].attributes.image}
             <Picture class="next-prev-card-image" url={post[1].attributes.image} alt={`Feature image of ${post[1].attributes.title}`} />
             <span class="next-prev-card-direction">{index === 0 ? 'Older' : 'Newer'}</span>
@@ -119,6 +119,10 @@
 
     @media (--tablet) {
       padding: 0;
+    }
+
+    @media print {
+      margin-top: calc(var(--space) * 2);
     }
   }
 
@@ -157,6 +161,10 @@
     position: relative;
     margin: calc(var(--space) * 6) 0 0;
 
+    @media print {
+      display: none;
+    }
+
     section {
       --share-icon-size: 32px;
 
@@ -193,6 +201,10 @@
     @media (--phone) {
       flex-wrap: wrap;
     }
+
+    @media print {
+      flex-flow: column;
+    }
   }
 
   .next-prev-card {
@@ -221,6 +233,17 @@
       flex-basis: auto;
     }
 
+    @media print {
+      margin-right: 0;
+      margin-left: 0;
+      max-width: unset;
+      border: 0;
+
+      &:not(:last-child) {
+        margin-bottom: calc(var(--space) * 2);
+      }
+    }
+
     &:first-child {
       margin-left: 0;
     }
@@ -238,6 +261,10 @@
       width: 100%;
       height: 100%;
       opacity: 0.15;
+
+      @media print {
+        display: none;
+      }
     }
 
     &-direction {
@@ -251,6 +278,10 @@
     &--right &-direction,
     &--right &-time {
       text-align: right;
+
+      @media print {
+        text-align: left;
+      }
     }
 
     &-title {

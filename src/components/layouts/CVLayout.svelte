@@ -104,7 +104,7 @@
           <h2 class="section-title">Skills</h2>
           <ul class="list skill-groups-list">
             {#each data.skills ?? [] as skill}
-              <li>
+              <li class="skill-group">
                 <article class="skill">
                   <header class="skill-header">{skill.title}</header>
                   <ul class="list skill-list">
@@ -155,7 +155,7 @@
     </div>
 
     <div>
-      <section class="section">
+      <section class="section break-page">
         <h2 class="section-title">Experience</h2>
         <ul class="list">
           {#each data.experiences ?? [] as experience}
@@ -224,11 +224,20 @@
 </div>
 
 <style lang="scss">
+  @page {
+    margin: 0.8cm 0;
+  }
+
   .page {
     max-width: 1000px;
     margin: 0 auto;
     padding: calc(var(--space) * 8) calc(var(--space) * 3);
     font: var(--typography-body-cv);
+
+    @media print {
+      font: var(--typography-body-cv-print);
+      padding: 0 calc(var(--space) * 6);
+    }
 
     :global(.contact-link) {
       display: flex;
@@ -320,12 +329,17 @@
       font: var(--typography-title-l);
 
       @media print {
+        font: var(--typography-title);
         color: var(--color-accent-dark);
       }
     }
 
     &__role {
       font: var(--typography-title-thin);
+
+      @media print {
+        font: var(--typography-title-thin-s);
+      }
     }
 
     &__description {
@@ -364,6 +378,14 @@
     }
   }
 
+  .break-page {
+    break-before: always;
+
+    @media print {
+      padding-top: calc(var(--space) * 2);
+    }
+  }
+
   .list {
     list-style: none;
     padding: 0;
@@ -385,10 +407,18 @@
   .language-name {
     font: var(--typography-body-cv-strong);
     color: var(--color-text-accent);
+
+    @media print {
+      font: var(--typography-body-cv-strong-print);
+    }
   }
 
   .skill-groups-list {
     column-count: 2;
+  }
+
+  .skill-group {
+    break-inside: avoid-column;
   }
 
   .download-sidebar-container {
@@ -404,6 +434,10 @@
       font: var(--typography-body-cv-strong);
       color: var(--color-text-accent);
       margin-bottom: var(--space);
+
+      @media print {
+        font: var(--typography-body-cv-strong-print);
+      }
     }
   }
 
@@ -429,11 +463,19 @@
     &-header {
       &-title {
         font: var(--typography-body-cv-strong);
+
+        @media print {
+          font: var(--typography-body-cv-strong-print);
+        }
       }
 
       &-date {
         margin-top: var(--space);
       }
+    }
+
+    &-description {
+      margin: calc(var(--space) * 2) 0;
     }
 
     &--present,
@@ -443,6 +485,7 @@
 
     @media print {
       opacity: 1;
+      margin-bottom: calc(var(--space) * 3);
     }
   }
 

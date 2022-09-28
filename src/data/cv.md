@@ -3,7 +3,7 @@ layout: CVLayout
 name: Vitalii Rybachenko
 about: Full Stack Developer
 logo: /assets/logo.jpg
-pdfUrl: /assets/cv.pdf
+pdfUrl: /cv.pdf
 gender: male
 birthday: 1993-11-21T00:00:00.000Z
 careerStartDate: 2010-11-01T00:00:00.000Z
@@ -107,7 +107,9 @@ experiences:
     dateEnd: 2014-08-01T00:00:00.000+00:00
     description: >
       * Development of browser-based real-money HTML5 blackjack game. Framework adaptation from platformer-games to casual-games.
+
       * Development of browser MMORPG. Creating web services which handle authentication, deployment and testing.
+
       * Development of mobile version of the game. Creating map tiles generator.
   - name: Freelance
     position: Web Developer
