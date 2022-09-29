@@ -234,6 +234,10 @@
     padding: calc(var(--space) * 8) calc(var(--space) * 3);
     font: var(--typography-body-cv);
 
+    @media (--big-phone) {
+      padding-top: calc(var(--space) * 4);
+    }
+
     @media print {
       font: var(--typography-body-cv-print);
       padding: 0 calc(var(--space) * 6);
@@ -318,6 +322,12 @@
     flex-flow: row nowrap;
     justify-content: space-between;
 
+    @media (--phone) {
+      flex-flow: column-reverse nowrap;
+      align-items: center;
+      text-align: center;
+    }
+
     @media print {
       border-bottom-color: var(--color-accent-dark);
     }
@@ -351,6 +361,10 @@
       height: 140px;
       border-radius: 70px;
       border: 5px solid var(--color-accent);
+
+      @media (--phone) {
+        margin-bottom: var(--space);
+      }
 
       @media print {
         width: 120px;

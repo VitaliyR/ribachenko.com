@@ -16,7 +16,6 @@ export async function GET() {
       <title><![CDATA[${post.attributes.title}]]></title>
       <description><![CDATA[${getPostDescription(post.body)}]]></description>
       <link>${new URL(slug, config.baseUrl).toString()}</link>
-      <guid isPermalink="false">${post.attributes.published_at.valueOf()}</guid>
       <dc:creator><![CDATA[${siteConfig.siteName}]]></dc:creator>
       <pubDate>${post.attributes.published_at.toGMTString()}</pubDate>
       <content:encoded><![CDATA[${getPostDescription(post.body, 500)}]]></content:encoded>
@@ -33,7 +32,7 @@ export async function GET() {
       <description><![CDATA[${siteConfig.description}]]></description>
       <link>${config.baseUrl}</link>
       <image>
-        <url>${siteConfig.logo}</url>
+        <url>${new URL(siteConfig.logo, config.baseUrl).toString()}</url>
         <title>${siteConfig.siteName}</title>
         <link>${config.baseUrl}</link>
       </image>
@@ -48,7 +47,7 @@ export async function GET() {
 
   return new Response(contents, {
     headers: {
-      'Content-Type': 'text/xml'
+      'Content-Type': 'application/rss+xml'
     }
   });
 }
