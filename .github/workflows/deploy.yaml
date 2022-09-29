@@ -30,10 +30,10 @@ jobs:
         run: cd ../ && rm -rf build && cp -r ${{ github.event.repository.name }} build && rm -rf latest && ln -s build latest
 
       - name: Restart SSR
-        run: pm2 restart ribachenko.com
+        run: source ~/.nvm/nvm.sh && nvm use 16 && pm2 restart ribachenko.com
 
       - name: Wait 5s
         run: sleep 5
 
       - name: Generate PDF
-        run: cd ${{ github.event.repository.name }} && npm run get:pdf && cp ./static/cv.pdf ../latest/build/static
+        run: source ~/.nvm/nvm.sh && nvm use 16 && npm run get:pdf && cp ./static/cv.pdf ../latest/build/client
