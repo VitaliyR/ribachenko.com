@@ -148,6 +148,7 @@
   :global(.post-page .content img) {
     margin: 0 auto;
     display: block;
+    max-width: 100%;
   }
 
   :global(.post-image) {

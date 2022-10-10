@@ -57,6 +57,10 @@
   .content {
     &--padding {
       padding: 0 calc(var(--space) * 4);
+
+      @media (--phone) {
+        padding: 0;
+      }
     }
   }
 
