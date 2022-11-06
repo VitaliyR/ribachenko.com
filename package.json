@@ -4,7 +4,7 @@
 	"scripts": {
 		"get:map": "node --experimental-specifier-resolution=node --loader ts-node/esm src/build/map.ts",
 		"get:pdf": "node --experimental-specifier-resolution=node --loader ts-node/esm src/build/pdf.ts",
-		"build-config": "rm -f config.js && buildconfig --input config.json --output src/config.ts --env $CONFIG_ENV --module-type typescript",
+		"build-config": "rm -f config.ts && buildconfig --input config.json --output src/config.ts --env $CONFIG_ENV --module-type typescript",
 		"build-config:local": "CONFIG_ENV=local npm run build-config",
 		"build-config:prod": "CONFIG_ENV=prod npm run build-config",
 		"start": "source ~/.nvm/nvm.sh && nvm use 16 && npm run build-config:local && npm run dev -- --port 4000",
