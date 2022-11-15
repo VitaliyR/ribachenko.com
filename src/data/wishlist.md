@@ -48,6 +48,9 @@ components:
             url: https://jabko.ua/rus/aksessuari/apple-magic-trackpad-2--mrmf2-
             title: Apple Magic Trackpad 2
             isDone: presented
+          - icon: 🎮
+            url: https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/
+            title: Call of Duty Modern Warfare 2 2022 Steam
           - icon: 🖱
             url: https://www.logitech.com/ru-ru/products/mice/mx-master-3.910-005694.html
             title: Logitech MX Master 3
