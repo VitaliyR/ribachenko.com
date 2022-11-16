@@ -7,7 +7,7 @@ components:
       If you want make surprise but don't know what to present me, here are some ideas to help you 😊
 
 
-      I'm run this list not only for an ideas for you, but also as an ideas for me - for the things which 
+      I'm run this list not only for an ideas for you, but also as an ideas for me - for the things which
       I want to buy, but not now. In worst case scenario you can just send me some beer in non-liquid state 💳
   - type: ItemsListSection
     items:
@@ -16,18 +16,21 @@ components:
           - icon: 💳
             url: https://send.monobank.com.ua/2BgRGaJ9q?f
             title: Send me money from any card
+      - title: Tech
+        items:
+          - icon: 🎮
+            url: https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/
+            title: Call of Duty Modern Warfare 2 2022 Steam
+      - title: Archive
+        items:
           - icon: 🪑
             url: https://www.3ona51.com/ru/gaming-chairs/dxracer-oh-is166-nw/index.html
             title: DXRacer Chair
             isDone: presented
-      - title: Car
-        items:
           - icon: 📹
             url: https://rozetka.com.ua/xiaomi_yi_smart_dash_gray/p11283724/
             title: DVR
             isDone: presented
-      - title: Tech
-        items:
           - icon: 🖱
             url: https://www.3ona51.com/ru/gaming-mouses/steelseries-sensei-ten-62527/index.html
             title: Steelseries Ten
@@ -56,10 +59,4 @@ components:
             url: https://hotline.ua/av-mediacentry/google-chromecast-3rd-generation/prices/?merchantid=24029&gclid=CjwKCAiAx_DwBRAfEiwA3vwZYq0cfIcQ7gaKIoEYRsaxvtiNBq-qJfZQ9HXe0fN7nYiM3P2tlw5d6hoCE84QAvD_BwE
             title: Google Chromecast
             isDone: purchased
-          - icon: 👔
-            url: https://store.uprightpose.com/products/upright-go2-v2
-            title: UPRIGHT GO Posture Corrector
-          - icon: 🎮
-            url: https://store.steampowered.com/app/1938090/Call_of_Duty_Modern_Warfare_II/
-            title: Call of Duty Modern Warfare 2 2022 Steam
 ---
