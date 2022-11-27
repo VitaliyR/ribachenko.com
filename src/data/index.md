@@ -4,7 +4,7 @@ components:
   - type: TextSection
     hasBorder: true
     text: >
-      Primarily full stack **web** developer, but making more mobile applications nowadays.
+      Primarily full stack **web** developer with some experience making native mobile applications.
 
 
       Traveling [Forgotten Realms](https://en.wikipedia.org/wiki/Forgotten_Realms), adore driving everything
