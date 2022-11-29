@@ -5,6 +5,8 @@ const parseDates = (obj: any) =>
   deepMap(obj, (value) => {
     if (typeof value === 'string' && value.endsWith('Z') && value.match(/^\d/)) {
       return new Date(value);
+    } else if (typeof value === 'string' && value.match(/^\d{4}[-/]\d{2}[-/]\d{2}$/)) {
+      return new Date(value.replace(/-/g, '/'));
     }
     return value;
   });

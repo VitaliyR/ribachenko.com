@@ -5,8 +5,8 @@ about: Full Stack Developer
 logo: /assets/logo.jpg
 pdfUrl: /cv.pdf
 gender: male
-birthday: 1993-11-21T00:00:00.000Z
-careerStartDate: 2010-11-01T00:00:00.000Z
+birthday: '1993-11-21'
+careerStartDate: '2010-11-01'
 contacts:
   - icon: email-stroke
     url: mailto:vit@ribachenko.com
@@ -62,31 +62,31 @@ experiences:
   - name: Stackbit
     position: Senior Fullstack Developer
     location: Remote
-    dateStart: 2019-06-01T00:00:00.000+00:00
+    dateStart: '2019-06-01'
     description: >
       Development of the JAM integration platform between different static site generators and content management systems, using themes which are
       developed either for specific site generator or in universal template format Unibit, which can be transpiled to any supported site generator.
   - name: MyHeritage
     position: Senior Web Developer
     location: Lviv, Ukraine
-    dateStart: 2018-09-01T00:00:00.000+00:00
-    dateEnd: 2018-11-01T00:00:00.000+00:00
+    dateStart: '2018-09-01'
+    dateEnd: '2018-11-01'
     description: >
       Development new family home page as single page application using React, Redux, GraphQL. Continuous integration with
       every hour releases to production, writing unit tests covering code for new application.
   - name: Sprut.ua
     position: Founder & Developer
     location: Vinnytsia, Ukraine
-    dateStart: 2017-05-01T00:00:00.000+00:00
-    dateEnd: 2020-03-01T00:00:00.000+00:00
+    dateStart: '2017-05-01'
+    dateEnd: '2020-03-01'
     description: >
       Started from creating small iOS application for ordering taxi in my local city, grown up to big project with
       thousands of active users, spreading to other cities and constantly increasing app features.
   - name: Clio Online (Ciklum)
     position: Senior Web Developer
     location: Vinnytsia, Ukraine
-    dateStart: 2015-06-01T00:00:00.000+00:00
-    dateEnd: 2018-08-01T00:00:00.000+00:00
+    dateStart: '2015-06-01'
+    dateEnd: '2018-08-01'
     description: >
       Development and supporting biggest in Denmark learning management system, which contains a lot of subprojects for various
       types of schools. Also, launched in Sweden and there are plans to grow for other countries. Two offices, in Copenhagen and
@@ -95,16 +95,16 @@ experiences:
   - name: EPAM
     position: Senior Web Developer
     location: Vinnytsia, Ukraine
-    dateStart: 2014-08-01T00:00:00.000+00:00
-    dateEnd: 2015-06-01T00:00:00.000+00:00
+    dateStart: '2014-08-01'
+    dateEnd: '2015-06-01'
     description: >
       Development of modules and components for project running under Adobe Experience Manager CMS (ver. 6) for world-known company.
       Creating various components to be used on the page in the browser or/and in the email clients.
   - name: Win Interactive (ex. Orneon)
     position: Web Developer
     location: Vinnytsia, Ukraine
-    dateStart: 2011-08-01T00:00:00.000+00:00
-    dateEnd: 2014-08-01T00:00:00.000+00:00
+    dateStart: '2011-08-01'
+    dateEnd: '2014-08-01'
     description: >
       * Development of browser-based real-money HTML5 blackjack game. Framework adaptation from platformer-games to casual-games.
 
@@ -114,15 +114,15 @@ experiences:
   - name: Freelance
     position: Web Developer
     location: Vinnytsia, Ukraine
-    dateStart: 2010-11-01T00:00:00.000+00:00
-    dateEnd: 2011-08-01T00:00:00.000+00:00
+    dateStart: '2010-11-01'
+    dateEnd: '2011-08-01'
     description: >
       Working as a freelancer on different projects. Worked both on frontend and backend parts.
 educations:
   - name: Vinnytsia National Technical University
     degree: BSc and MSc Degree
-    dateStart: 2012-01-01T00:00:00.000+00:00
-    dateEnd: 2016-01-01T00:00:00.000+00:00
+    dateStart: '2012-01-01'
+    dateEnd: '2016-01-01'
     description: >
       Faculty of Computer Systems and Networks, Systems engineer in computer systems and networks.
 etc: >

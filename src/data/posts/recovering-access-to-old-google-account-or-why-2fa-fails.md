@@ -4,8 +4,8 @@ title: Recovering access to old Google account or why 2FA fails
 image: /assets/posts/recovering-access-to-old-google-account-or-why-2fa-fails.jpg
 featured: false
 published: true
-published_at: 2020-04-11T11:00:00.000+00:00
-updated_at: 2020-04-11T11:00:00.000+00:00
+published_at: '2020-04-11'
+updated_at: '2020-04-11'
 tags:
   - name: IT
     slug: it
@@ -16,7 +16,7 @@ I was using one Google account around 10 years ago and was happy enough until I�
 
 ![GSuite logo](/assets/posts/gsuite.png)
 
-Everything was okay until Google started, first of all, deprecating Google Suite Basic plan and making new features only for standard google accounts. So, regarding deprecation - for old users nothing has been changed - accounts are still working normally. But with features I’m having issues, because, for instance, you can’t subscribe to YouTube premium family subscription using Google Suite account. I don’t really know why Google decided to do so. Google Suite is basically a product for companies, and I think there are plenty companies out there which are creating videos, so why the company can’t pay for Youtube premium for entire organisation? It might be called not family subscription, but still such feature should be available, but it isn’t. 
+Everything was okay until Google started, first of all, deprecating Google Suite Basic plan and making new features only for standard google accounts. So, regarding deprecation - for old users nothing has been changed - accounts are still working normally. But with features I’m having issues, because, for instance, you can’t subscribe to YouTube premium family subscription using Google Suite account. I don’t really know why Google decided to do so. Google Suite is basically a product for companies, and I think there are plenty companies out there which are creating videos, so why the company can’t pay for Youtube premium for entire organisation? It might be called not family subscription, but still such feature should be available, but it isn’t.
 
 So I’ve decided to restore my old account, and, thankfully, I’m remember password. Yep, on that account I’m having some simple password - 10 years ago I wasn’t so experienced in IT security topics, but was still smart enough to enable 2FA on that account.
 
@@ -28,4 +28,4 @@ The idea of this story that 2FA is great, but what if this phone number was not 
 
 ![Yubikey](/assets/posts/yubikey.png)
 
-What’s other solutions? You can buy some hardware token, like **Yubikey**, but you can lost it too! But here there are more smart solutions in case of emergencies - you can just have 2 keys, one is your main key and another is backup which you keep at home. And if you would loose your main key - you can login using backup, remove main key and order another backup key - and that’s it. With phone numbers everything much harder - you just can’t ask some other guy to return back his number. 
+What’s other solutions? You can buy some hardware token, like **Yubikey**, but you can lost it too! But here there are more smart solutions in case of emergencies - you can just have 2 keys, one is your main key and another is backup which you keep at home. And if you would loose your main key - you can login using backup, remove main key and order another backup key - and that’s it. With phone numbers everything much harder - you just can’t ask some other guy to return back his number.
