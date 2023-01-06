@@ -47,34 +47,5 @@
       "url": "mailto:vit@ribachenko.com",
       "icon": "email"
     }
-  ],
-  "projects": [
-    {
-      "title": "Stackbit",
-      "description": "Easiest way to create your own site with the best tools is Stackbit - first open, complete platform for the Jamstack",
-      "image": "/res/projects/stackbit.png",
-      "imageDark": "/res/projects/stackbit-dark.png",
-      "href": "https://stackbit.com"
-    },
-    {
-      "title": "Julia Ribachenko",
-      "description": "Food expert & blogger, author of food courses and my beloved wife. I'm providing IT support for all projects",
-      "image": "/res/projects/julia.png",
-      "imageDark": "/res/projects/julia-dark.png",
-      "href": "https://juliaribachenko.com"
-    },
-    {
-      "title": "Sprut",
-      "description": "Taxi ordering service in Ukraine. Available for iOS and Android, and also there are separate apps for drivers",
-      "image": "/res/projects/sprut.png",
-      "href": "https://sprut.ua"
-    },
-    {
-      "title": "Open source contributions",
-      "description": "My open source contributions on Github",
-      "image": "/res/projects/github.png",
-      "imageDark": "/res/projects/github-dark.png",
-      "href": "https://github.com/vitaliyr?tab=repositories"
-    }
   ]
 }

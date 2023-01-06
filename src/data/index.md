@@ -32,6 +32,7 @@ components:
         image: /assets/projects/julia.png
         imageDark: /assets/projects/julia-dark.png
         href: https://juliaribachenko.com
+        hidden: true
       - title: Sprut
         description: Taxi ordering service in Ukraine. Available for iOS and Android, and also there are separate apps for drivers
         image: /assets/projects/sprut.png

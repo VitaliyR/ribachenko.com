@@ -6,6 +6,7 @@
     image: string;
     imageDark?: string;
     date?: Date;
+    hidden?: boolean;
   };
 </script>
 
@@ -24,6 +25,7 @@
 <Section {hasBorder} {title} {titleSlot}>
   <ul class="items">
     {#each cards as card}
+      {#if !card.hidden}
       <li class="item">
         <a
           target={card.href.startsWith('/') ? undefined : '_blank'}
@@ -45,6 +47,7 @@
           </article>
         </a>
       </li>
+      {/if}
     {/each}
   </ul>
 </Section>
