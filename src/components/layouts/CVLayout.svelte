@@ -89,7 +89,7 @@
         <span>{new Date(Date.now() - data.careerStartDate.getTime()).getFullYear() - 1970}</span> years experience
       </p>
     </div>
-    <a class="link link--plain" href={data.logo} target="_blank">
+    <a class="link link--plain" href={data.logo} target="_blank" rel="noreferrer">
       <Picture class="page-header__avatar" url={data.logo} alt={data.name} />
     </a>
   </header>

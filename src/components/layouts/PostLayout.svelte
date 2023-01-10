@@ -63,7 +63,7 @@
       </section>
     </div>
     {#if data.image}
-      <a href={data.image} target="_blank">
+      <a href={data.image} target="_blank" rel="noreferrer">
         <Picture url={data.image} alt={`Feature image of ${data.title}`} class="post-image" />
       </a>
     {/if}

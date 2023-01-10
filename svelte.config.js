@@ -23,7 +23,7 @@ const config = {
       },
       preserve: ['ld+json'],
       postcss: {
-        plugins: [customMedia({ importFrom: `${stylePath}/theme.scss` }), autoprefixer()]
+        plugins: [customMedia(), autoprefixer()]
       }
     }),
     images()

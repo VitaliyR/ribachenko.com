@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import { omit } from 'lodash-es';
+  import { omitBy } from 'lodash-es';
   import TextSection from '../molecules/TextSection.svelte';
   import CardsListSection from '../molecules/CardsListSection.svelte';
   import PostsFeedSection from '../molecules/PostsFeedSection.svelte';
@@ -23,7 +23,7 @@
 
 <script lang="ts">
   export let type: ComponentType;
-  $: componentProps = omit($$props, ['type']);
+  $: componentProps = omitBy($$props, (value, key) => key === 'type' || typeof value === 'undefined');
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   $: component = MAP[type] as any;
 </script>

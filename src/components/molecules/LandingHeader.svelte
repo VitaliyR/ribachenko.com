@@ -16,7 +16,7 @@
 <header class="header" class:header--show-map={isMapShown} on:mouseleave={hideMap}>
   <div class="header__top">
     <div>
-      <a class="header__avatar-container link link--plain" href={siteConfig.logo} target="_blank">
+      <a class="header__avatar-container link link--plain" href={siteConfig.logo} target="_blank" rel="noreferrer">
         <Picture class="header__avatar" url={siteConfig.logo} alt={siteConfig.siteName} />
       </a>
     </div>
