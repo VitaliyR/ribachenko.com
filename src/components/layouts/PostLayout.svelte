@@ -79,6 +79,15 @@
           <a
             class="link link--plain"
             target="_blank"
+            href={`https://mastodon.social/share?text=${shareText}&url=${postUrl}`}
+            rel="noreferrer noopener"
+            aria-label="Share this article via Mastodon"
+          >
+            <Icon icon="mastodon" />
+          </a>
+          <a
+            class="link link--plain"
+            target="_blank"
             href={`https://twitter.com/share?text=${shareText}&url=${postUrl}`}
             rel="noreferrer noopener"
             aria-label="Share this article via Twitter"

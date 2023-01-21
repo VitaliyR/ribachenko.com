@@ -24,6 +24,7 @@
   import StackbitIcon from '../../assets/stackbit.svg';
   import TelegramStrokeIcon from '../../assets/telegram-stroke.svg';
   import TwitterIcon from '../../assets/twitter.svg';
+  import MastodonIcon from '../../assets/mastodon.svg';
 
   const ICONS = {
     'daynight-stroke': DaynightStrokeIcon,
@@ -50,7 +51,8 @@
     'skype-stroke': SkypeStrokeIcon,
     stackbit: StackbitIcon,
     'telegram-stroke': TelegramStrokeIcon,
-    twitter: TwitterIcon
+    twitter: TwitterIcon,
+    mastodon: MastodonIcon
   };
 
   export type IconName = keyof typeof ICONS;

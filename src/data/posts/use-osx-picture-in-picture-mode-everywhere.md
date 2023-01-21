@@ -4,8 +4,8 @@ title: Use OS X Picture in Picture mode everywhere
 image: /assets/posts/use-osx-picture-in-picture-mode.jpg
 featured: false
 published: true
-published_at: '2017-05-18'
-updated_at: '2017-05-18'
+published_at: 2017-05-18T10:11:00.000+00:00
+updated_at: 2017-05-18T10:11:00.000+00:00
 tags:
   - name: Programming
     slug: programming

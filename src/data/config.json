@@ -18,6 +18,11 @@
   },
   "socials": [
     {
+      "name": "Mastodon",
+      "url": "https://mastodon.social/@Salen",
+      "icon": "mastodon"
+    },
+    {
       "name": "Twitter",
       "url": "https://twitter.com/sa1en",
       "icon": "twitter"
@@ -28,6 +33,11 @@
       "icon": "facebook"
     },
     {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/sa1en/",
+      "icon": "instagram"
+    },
+    {
       "name": "Github",
       "url": "https://github.com/vitaliyr",
       "icon": "github"
@@ -36,11 +46,6 @@
       "name": "LinkedIn",
       "url": "https://www.linkedin.com/in/vitalii-rybachenko",
       "icon": "linkedin"
-    },
-    {
-      "name": "Instagram",
-      "url": "https://www.instagram.com/sa1en/",
-      "icon": "instagram"
     },
     {
       "name": "Email",
