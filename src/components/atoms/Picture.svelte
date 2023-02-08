@@ -2,6 +2,7 @@
   import { browser } from '$app/environment';
   import { Mime } from '$lib/mime';
   import { EventSchemeChangedName, type EventSchemeChanged, isEnabledDarkScheme } from '$lib/scheme';
+  import { onDestroy } from 'svelte';
 
   export let url: string;
   export let urlDark: string | undefined = undefined;
@@ -16,13 +17,21 @@
   let isVisible = !urlDark;
   let isDarkMode = false;
 
+  const onSchemeChanged = (e: EventSchemeChanged) => {
+    isDarkMode = e.detail.isDark;
+  };
+
   if (browser) {
     isDarkMode = isEnabledDarkScheme();
-    document.documentElement.addEventListener(EventSchemeChangedName, (e: EventSchemeChanged) => {
-      isDarkMode = e.detail.isDark;
-    });
+    document.documentElement.addEventListener(EventSchemeChangedName, onSchemeChanged);
     isVisible = true;
   }
+
+  onDestroy(() => {
+    if (browser) {
+      document.documentElement.removeEventListener(EventSchemeChangedName, onSchemeChanged);
+    }
+  });
 
   const REPLACE_REGEXP = /^\/assets\//;
   let srcSets: Array<{
