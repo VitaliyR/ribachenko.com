@@ -42,6 +42,16 @@ components:
         image: /assets/projects/github.png
         imageDark: /assets/projects/github-dark.png
         href: https://github.com/vitaliyr?tab=repositories
+  - type: MastodonFeedSection
+    title: Mastodon
+    hasBorder: true
+    limit: 10
+    titleSlot:
+      type: Link
+      icon: mastodon
+      url: https://mastodon.social/@Salen
+      newTab: true
+      isPlain: true
   - type: PostsFeedSection
     title: Posts
     titleSlot:

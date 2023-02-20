@@ -3,6 +3,7 @@
   import TextSection from '../molecules/TextSection.svelte';
   import CardsListSection from '../molecules/CardsListSection.svelte';
   import PostsFeedSection from '../molecules/PostsFeedSection.svelte';
+  import MastodonFeedSection from '../molecules/MastodonFeedSection.svelte';
   import ItemsListSection from '../molecules/ItemsListSection.svelte';
   import Link from '../atoms/Link.svelte';
 
@@ -10,6 +11,7 @@
     TextSection,
     CardsListSection,
     PostsFeedSection,
+    MastodonFeedSection,
     ItemsListSection,
     Link
   } as const;
