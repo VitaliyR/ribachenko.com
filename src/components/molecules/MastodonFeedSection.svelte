@@ -149,10 +149,14 @@
 
   .item-content {
     margin-top: var(--space);
-    line-break: anywhere;
 
     :global(p) {
       margin: 0;
+    }
+
+    :global(a) {
+      color: unset;
+      line-break: anywhere;
     }
   }
 
