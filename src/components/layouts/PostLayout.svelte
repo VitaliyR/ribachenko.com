@@ -1,15 +1,14 @@
 <script lang="ts">
   import { toPairs } from 'lodash-es';
   import { browser } from '$app/environment';
-  import { getContext } from 'svelte';
   import dayjs from 'dayjs';
-  import { META_CONTEXT, type MetaContext } from '$lib/context';
   import { getPostDescription } from '$lib/utils';
   import type { Page, Post } from '../../models/types';
   import PageLayout from './PageLayout.svelte';
   import Icon from '../atoms/Icon.svelte';
   import config from '../../config';
   import Picture from '../atoms/Picture.svelte';
+  import { metaStore } from '../../lib/stores';
 
   export let slug: string;
   export let data: Post;
@@ -24,10 +23,8 @@
   let shareText: string;
   let postUrl: string;
 
-  const meta = getContext(META_CONTEXT) as MetaContext;
-
   $: {
-    const posts = toPairs(meta.pages)
+    const posts = toPairs($metaStore.pages)
       .filter((obj) => obj[0].startsWith('posts/'))
       .sort((a, b) => b[1].attributes.published_at.getTime() - a[1].attributes.published_at.getTime());
     const postIndex = posts.findIndex((obj) => obj[0] === `${slug}.md`);

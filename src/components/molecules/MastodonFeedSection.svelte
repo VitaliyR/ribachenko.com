@@ -1,17 +1,14 @@
 <script lang="ts">
   import dayjs from 'dayjs';
-  import { getContext } from 'svelte';
-  import { MASTODON_CONTEXT, type MastodonContext } from '$lib/context';
   import Section from './Section.svelte';
   import type { BaseComponent } from '../atoms/Component.svelte';
+  import { mastodonStore } from '../../lib/stores';
 
   export let hasBorder = false;
   export let title: string;
   export let titleSlot: BaseComponent | undefined = undefined;
   export let limit: number | undefined = undefined;
-
-  const mastodonContext = getContext(MASTODON_CONTEXT) as MastodonContext;
-  const posts = limit ? mastodonContext.feed?.slice(0, limit) : mastodonContext.feed;
+  const posts = limit ? $mastodonStore.feed?.slice(0, limit) ?? [] : $mastodonStore.feed ?? [];;
 </script>
 
 {#if posts}
@@ -37,7 +34,7 @@
         </div>
       </a>
       <div class="item-contents-container" class:entire-line={post.reblog?.images.length ?? post.images.length}>
-        <div class="item-content">
+        <div class="item-content links-print-url">
           {@html post.reblog?.content ?? post.content}
         </div>
         {#if post.reblog?.images ?? post.images}
@@ -155,7 +152,6 @@
     }
 
     :global(a) {
-      color: unset;
       line-break: anywhere;
     }
   }

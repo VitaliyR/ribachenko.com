@@ -62,6 +62,7 @@
 		"front-matter": "^4.0.2",
 		"lodash-es": "^4.17.21",
 		"marked": "^4.2.12",
+		"node-html-parser": "^6.1.4",
 		"prismjs": "^1.29.0",
 		"sass": "^1.58.3",
 		"single-config": "^2.0.1",

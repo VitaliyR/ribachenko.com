@@ -1,18 +1,17 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import { META_CONTEXT, type MetaContext } from '$lib/context';
   import CardsListSection from './CardsListSection.svelte';
   import type { BaseComponent } from '../atoms/Component.svelte';
+  import { metaStore } from '../../lib/stores';
 
   export let hasBorder = false;
   export let title: string;
   export let titleSlot: BaseComponent | undefined = undefined;
 
-  const meta = getContext(META_CONTEXT) as MetaContext;
-  const cards = Object.keys(meta.pages)
-    .filter((pagePath) => meta.pages[pagePath].attributes.published)
+  const pages = $metaStore.pages;
+  const cards = Object.keys(pages)
+    .filter((pagePath) => pages[pagePath].attributes.published)
     .map((pagePath) => {
-      const page = meta.pages[pagePath];
+      const page = pages[pagePath];
       const slug = pagePath.split('.').slice(0, -1).join('.');
       const cleanContent = page.body.replace(/<\/?.+?>/gm, '').trim();
       return {
