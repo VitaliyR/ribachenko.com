@@ -15,7 +15,9 @@
 <Section {hasBorder} {title} {titleSlot}>
   <div class="container">
   {#each posts as post}
-    <div class="item" class:entire-line={post.reblog?.images.length ?? post.images.length}>
+    {@const content = post.reblog?.content ?? post.content}
+    {@const isEntireLine = content?.length > 25 && (post.reblog?.images.length ?? post.images.length)}
+    <div class="item" class:entire-line={isEntireLine}>
       <a href={post.reblog?.url ?? post.url} target="_blank" rel="noreferrer noopener" class="item-link">
         <div class="item-header">
           <div class="item-image-container" class:reblog={post.reblog}>
@@ -33,9 +35,9 @@
           </div>
         </div>
       </a>
-      <div class="item-contents-container" class:entire-line={post.reblog?.images.length ?? post.images.length}>
+      <div class="item-contents-container" class:entire-line={isEntireLine}>
         <div class="item-content links-print-url">
-          {@html post.reblog?.content ?? post.content}
+          {@html content}
         </div>
         {#if post.reblog?.images ?? post.images}
         <div class="item-attachment-container">
