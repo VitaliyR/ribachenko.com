@@ -393,10 +393,9 @@
   }
 
   .break-page {
-    break-before: always;
-
     @media print {
-      padding-top: calc(var(--space) * 2);
+      break-before: page;
+      margin-top: 0;
     }
   }
 
@@ -500,6 +499,7 @@
     @media print {
       opacity: 1;
       margin-bottom: calc(var(--space) * 3);
+      box-decoration-break: clone;
     }
   }
 

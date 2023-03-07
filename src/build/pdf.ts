@@ -11,7 +11,7 @@ const PDFs = [
 const pdf = async function pdf() {
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--font-render-hinting=medium']
+    args: ['--font-render-hinting=none']
   });
   const page = await browser.newPage();
 
