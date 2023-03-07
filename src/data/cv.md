@@ -64,8 +64,11 @@ experiences:
     location: Remote
     dateStart: '2019-06-01'
     description: >
-      Development of the JAM integration platform between different static site generators and content management systems, using themes which are
-      developed either for specific site generator or in universal template format Unibit, which can be transpiled to any supported site generator.
+      Stackbit redefines the way websites are being built. Stackbit empowers developers to build websites the way they like, using the tools they
+      love and programming patterns they are accustomed to. However, the technology selected by developers does not limit content creators in WYSIWYG
+      editing capabilities.
+      I'm working on different parts of the product, mostly focused on the Studio product - an app which allows users to edit their sites in WYSIWYG and
+      seeing changes in live preview.
   - name: MyHeritage
     position: Senior Web Developer
     location: Lviv, Ukraine
