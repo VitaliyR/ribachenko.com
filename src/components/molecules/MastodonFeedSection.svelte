@@ -8,51 +8,58 @@
   export let title: string;
   export let titleSlot: BaseComponent | undefined = undefined;
   export let limit: number | undefined = undefined;
-  const posts = limit ? $mastodonStore.feed?.slice(0, limit) ?? [] : $mastodonStore.feed ?? [];;
+  const posts = limit ? $mastodonStore.feed?.slice(0, limit) ?? [] : $mastodonStore.feed ?? [];
 </script>
 
 {#if posts}
-<Section {hasBorder} {title} {titleSlot}>
-  <div class="container">
-  {#each posts as post}
-    {@const content = post.reblog?.content ?? post.content}
-    {@const isEntireLine = content?.length > 25 && (post.reblog?.images.length ?? post.images.length)}
-    <div class="item" class:entire-line={isEntireLine}>
-      <a href={post.reblog?.url ?? post.url} target="_blank" rel="noreferrer noopener" class="item-link">
-        <div class="item-header">
-          <div class="item-image-container" class:reblog={post.reblog}>
-            {#if post.reblog}
-            <img class="reblog-image" src={post.reblog.avatar} alt="Avatar of reblogged author" />
-            {/if}
-            <img class="item-image" class:reblog={post.reblog} src={post.avatar} alt="Avatar" />
-          </div>
-          <div class="item-name-container">
-            <div class="item-name">{post.reblog?.displayName ?? post.displayName}</div>
-            <div>@{post.reblog?.username ?? post.username}</div>
-          </div>
-          <div class="item-date">
-            {dayjs(post.createdAt).format('DD MMM YY')}
-          </div>
-        </div>
-      </a>
-      <div class="item-contents-container" class:entire-line={isEntireLine}>
-        <div class="item-content links-print-url">
-          {@html content}
-        </div>
-        {#if post.reblog?.images ?? post.images}
-        <div class="item-attachment-container">
-          {#each post.reblog?.images ?? post.images as url}
-          <a href={url} target="_blank" rel="noopener noreferrer">
-            <img class="item-attachment-image" src={url} alt="Post" />
+  <Section {hasBorder} {title} {titleSlot}>
+    <div class="container">
+      {#each posts as post}
+        {@const content = post.reblog?.content ?? post.content}
+        {@const isEntireLine = content?.length > 25 && (post.reblog?.media.length ?? post.media.length)}
+        <div class="item" class:entire-line={isEntireLine}>
+          <a href={post.reblog?.url ?? post.url} target="_blank" rel="noreferrer noopener" class="item-link">
+            <div class="item-header">
+              <div class="item-image-container" class:reblog={post.reblog}>
+                {#if post.reblog}
+                  <img class="reblog-image" src={post.reblog.avatar} alt="Avatar of reblogged author" />
+                {/if}
+                <img class="item-image" class:reblog={post.reblog} src={post.avatar} alt="Avatar" />
+              </div>
+              <div class="item-name-container">
+                <div class="item-name">{post.reblog?.displayName ?? post.displayName}</div>
+                <div>@{post.reblog?.username ?? post.username}</div>
+              </div>
+              <div class="item-date">
+                {dayjs(post.createdAt).format('DD MMM YY')}
+              </div>
+            </div>
           </a>
-          {/each}
+          <div class="item-contents-container" class:entire-line={isEntireLine}>
+            <div class="item-content links-print-url">
+              {@html content}
+            </div>
+            {#if post.reblog?.media ?? post.media}
+              <div class="item-attachment-container">
+                {#each post.reblog?.media ?? post.media as media}
+                  <a href={media.url} target="_blank" rel="noopener noreferrer">
+                    {#if media.type === 'image'}
+                      <img class="item-attachment-image" src={media.url} alt="Post" />
+                    {:else if media.type === 'media'}
+                      <video autoplay loop muted class="item-attachment-image">
+                        <source src={media.url} type="video/mp4" />
+                        <track kind="captions" />
+                      </video>
+                    {/if}
+                  </a>
+                {/each}
+              </div>
+            {/if}
+          </div>
         </div>
-        {/if}
-      </div>
+      {/each}
     </div>
-  {/each}
-  </div>
-</Section>
+  </Section>
 {/if}
 
 <style lang="scss">

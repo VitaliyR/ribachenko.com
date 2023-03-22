@@ -113,6 +113,9 @@ export type MastodonRequestEntry = {
   username: string;
   displayName: string;
   avatar: string;
-  images: string[];
+  media: Array<{
+    url: string;
+    type: 'image' | 'media';
+  }>;
   reblog?: MastodonRequestEntry;
 };

@@ -8,6 +8,13 @@ const CACHE_TIME = 1000 * 60;
 let feedCache: MastodonRequestEntry[] = [];
 let feedUpdateDate: Date | undefined;
 
+const parseType = (type: string) => {
+  if (type === 'gifv') {
+    return 'media';
+  }
+  return 'image';
+};
+
 const transformEntry = (entry: MastodonApiEntry): MastodonRequestEntry => {
   const content = parse(entry.content);
   content.querySelectorAll('a').forEach((node) => {
@@ -23,7 +30,9 @@ const transformEntry = (entry: MastodonApiEntry): MastodonRequestEntry => {
     username: entry.account.username,
     displayName: entry.account.display_name,
     avatar: entry.account.avatar,
-    images: entry.media_attachments.filter((media) => media.type === 'image').map((media) => media.url),
+    media: entry.media_attachments
+      .filter((media) => media.type === 'image' || media.type === 'gifv')
+      .map((media) => ({ type: parseType(media.type), url: media.url })),
     reblog: entry.reblog ? transformEntry(entry.reblog) : undefined
   };
 };

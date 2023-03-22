@@ -26,27 +26,27 @@
   <ul class="items">
     {#each cards as card}
       {#if !card.hidden}
-      <li class="item">
-        <a
-          target={card.href.startsWith('/') ? undefined : '_blank'}
-          rel={card.href.startsWith('/') ? undefined : 'noreferrer noopener'}
-          href={card.href}
-          class="wrapper"
-        >
-          <article class="item-container">
-            <div class="image-container" data-text="View">
-              <Picture alt={card.title} url={card.image} urlDark={card.imageDark} class="image" />
-            </div>
-            <div class="header">
-              <h3>{card.title}</h3>
-              {#if card.date}
-                <span class="date">{dayjs(card.date).format('DD MMM YY')}</span>
-              {/if}
-            </div>
-            <p class="description">{card.description}</p>
-          </article>
-        </a>
-      </li>
+        <li class="item">
+          <a
+            target={card.href.startsWith('/') ? undefined : '_blank'}
+            rel={card.href.startsWith('/') ? undefined : 'noreferrer noopener'}
+            href={card.href}
+            class="wrapper"
+          >
+            <article class="item-container">
+              <div class="image-container" data-text="View">
+                <Picture alt={card.title} url={card.image} urlDark={card.imageDark} class="image" />
+              </div>
+              <div class="header">
+                <h3>{card.title}</h3>
+                {#if card.date}
+                  <span class="date">{dayjs(card.date).format('DD MMM YY')}</span>
+                {/if}
+              </div>
+              <p class="description">{card.description}</p>
+            </article>
+          </a>
+        </li>
       {/if}
     {/each}
   </ul>
