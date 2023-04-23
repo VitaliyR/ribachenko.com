@@ -10,6 +10,7 @@
   export let title: string | undefined = undefined;
   export let icon: IconName | undefined = undefined;
   export let download: string | undefined = undefined;
+  export let rel: string | undefined = undefined;
   export let isPlain = false;
   export let isHiddenPrint = false;
   export let newTab = false;
@@ -19,7 +20,7 @@
   href={url}
   class={classNames('link', { 'link--ic link--plain': isPlain, 'print-hidden': isHiddenPrint }, className)}
   target={newTab ? '_blank' : undefined}
-  rel={url.startsWith('/') ? undefined : 'noreferrer noopener'}
+  rel={rel ?? (url.startsWith('/') ? undefined : 'noreferrer noopener')}
   {download}
 >
   {#if icon}

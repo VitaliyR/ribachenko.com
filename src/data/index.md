@@ -51,6 +51,7 @@ components:
       url: https://mastodon.social/@Salen
       newTab: true
       isPlain: true
+      rel: me
   - type: PostsFeedSection
     title: Posts
     titleSlot:

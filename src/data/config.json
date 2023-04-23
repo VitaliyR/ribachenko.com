@@ -20,7 +20,8 @@
     {
       "name": "Mastodon",
       "url": "https://mastodon.social/@Salen",
-      "icon": "mastodon"
+      "icon": "mastodon",
+      "rel": "me"
     },
     {
       "name": "Twitter",

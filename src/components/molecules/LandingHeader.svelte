@@ -46,7 +46,7 @@
     <ul class="header__links">
       {#each siteConfig.socials as social}
         <li class="header__links-item">
-          <a class="link link--plain link--ic" href={social.url} target="_blank" aria-label={`${social.name} logo`} rel="noreferrer noopener">
+          <a class="link link--plain link--ic" href={social.url} target="_blank" aria-label={`${social.name} logo`} rel={social.rel ?? 'noreferrer noopener'}>
             <Icon class="header__link-icon" icon={social.icon} />
           </a>
         </li>
