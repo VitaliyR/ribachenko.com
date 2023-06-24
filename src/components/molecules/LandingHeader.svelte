@@ -13,7 +13,7 @@
 
 <svelte:window on:scroll={hideMap} />
 
-<header class="header" class:header--show-map={isMapShown} on:mouseleave={hideMap}>
+<header role="heading" aria-level={1} class="header" class:header--show-map={isMapShown} on:mouseleave={hideMap}>
   <div class="header__top">
     <div>
       <a class="header__avatar-container link link--plain" href={siteConfig.logo} target="_blank" rel="noreferrer">
