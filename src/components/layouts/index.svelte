@@ -3,6 +3,7 @@
   import PostLayout from './PostLayout.svelte';
   import CVLayout from './CVLayout.svelte';
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const LAYOUTS: { [K: string]: any } = {
     PageLayout,
     PostLayout,
@@ -11,6 +12,7 @@
 
   export let slug: string;
   export let layout: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   export let data: any;
   export let body: string;
 </script>

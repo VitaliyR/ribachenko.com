@@ -8,7 +8,7 @@
   export let pageType = 'WebSite';
   export let pageDescription = siteConfig.description;
   export let logoSrc: string = siteConfig.logo;
-  export let pageAdditionalData: any | undefined = undefined;
+  export let pageAdditionalData: Record<string, string | number | boolean> | undefined = undefined;
 
   const defaultPageTitle = pageTitle ? `${pageTitle} - ${siteConfig.siteName}` : siteConfig.siteName;
 

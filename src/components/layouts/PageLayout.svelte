@@ -3,6 +3,7 @@
   import LandingHeader from '../molecules/LandingHeader.svelte';
   import Component from '../atoms/Component.svelte';
   import SEO from '../atoms/SEO.svelte';
+  import type { PageLayoutData } from '../../models/types';
   import { rehighlightCode } from '$lib/md-utils';
   import { afterUpdate } from 'svelte';
 
@@ -10,7 +11,7 @@
 
   export { className as class };
   export let slug: string;
-  export let data: any;
+  export let data: PageLayoutData;
   export let body: string;
   export let addBodyPadding = false;
 

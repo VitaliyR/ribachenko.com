@@ -16,3 +16,15 @@ export type Post = {
   updated_at: Date;
   tags: Slug[];
 };
+
+export type LayoutData = {
+  layout: string;
+};
+
+export type ComponentData = {
+  type: string;
+};
+
+export type PageLayoutData = LayoutData & {
+  components: ComponentData[];
+};
