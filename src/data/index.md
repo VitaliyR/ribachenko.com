@@ -15,7 +15,7 @@ components:
       If you want make surprise but don't know what to present me, take a look at my [wishlist page](/wishlist).
 
 
-      **Full Stack Developer** @ [Stackbit](https://stackbit.com/).
+      **Staff Software Engineer** @ [Netlify](https://netlify.com/).
 
       Read more in my [CV](/cv).
   - type: CardsListSection

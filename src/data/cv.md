@@ -51,7 +51,7 @@ skills:
   - title: Build
     skills: ['Grunt', 'Gulp', 'Webpack', 'Brunch', 'Parcel', 'Rollup', 'NPM']
   - title: DevOps
-    skills: ['Git', 'Unix', 'Bash', 'Nginx', 'Jenkins', 'Travis', 'Codefresh', 'AWS']
+    skills: ['Docker', 'Git', 'Unix', 'Bash', 'Nginx', 'Jenkins', 'Travis', 'Codefresh', 'AWS']
   - title: Databases
     skills: ['MySQL', 'CouchDB', 'MongoDB', 'Redis']
   - title: iOS
@@ -59,16 +59,26 @@ skills:
   - title: Android
     skills: ['Java', 'Gradle', 'Proguard', 'RxJava', 'Realm', 'Play Market release', 'Crashlytics']
 experiences:
+  - name: Netlify
+    position: Staff Software Engineer
+    location: (Boston, MA, USA) Remote
+    dateStart: '2023-07-31'
+    description: >
+      After Stackbit has been acquired by Netlify, continue to improve and evolve the Studio.
   - name: Stackbit
     position: Senior Fullstack Developer
-    location: Remote
+    location: (Vinnytsia, Ukraine; Kyiv, Ukraine; Boston, MA, USA) Remote
     dateStart: '2019-06-01'
+    dateEnd: '2023-07-31'
     description: >
       Stackbit redefines the way websites are being built. Stackbit empowers developers to build websites the way they like, using the tools they
       love and programming patterns they are accustomed to. However, the technology selected by developers does not limit content creators in WYSIWYG
       editing capabilities.
+
       I'm working on different parts of the product, mostly focused on the Studio product - an app which allows users to edit their sites in WYSIWYG and
       seeing changes in live preview.
+
+      Acquired by Netlify.
   - name: MyHeritage
     position: Senior Web Developer
     location: Lviv, Ukraine
