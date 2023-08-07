@@ -44,20 +44,16 @@ skills:
     skills: ['Semantic', 'Accessible layout', 'Web standards', 'Template processors', 'Jamstack']
   - title: CSS
     skills: ['CSS3', 'Feature detection', 'SCSS', 'PostCSS', 'BEM', 'Adaptive layouts']
-  - title: Modern web graphics
-    skills: ['SVG', 'WebP']
-  - title: JS
-    skills: ['Web APIs', 'SPA', 'PWA', 'TypeScript', 'Preact', 'React', 'Redux', 'MobX', 'Svelte', 'Browser support', 'Debugging', 'Profiling', 'Performance optimization', 'Security', 'ES/Stylelint', 'JEST', 'TDD', 'NodeJS', 'ExpressJS', 'Koa']
-  - title: Build
-    skills: ['Grunt', 'Gulp', 'Webpack', 'Brunch', 'Parcel', 'Rollup', 'NPM']
-  - title: DevOps
-    skills: ['Docker', 'Git', 'Unix', 'Bash', 'Nginx', 'Jenkins', 'Travis', 'Codefresh', 'AWS']
+  - title: Web
+    skills: ['SVG', 'WebP', 'Web APIs', 'SPA', 'PWA', 'Browser support']
+  - title: JS/TS
+    skills: ['React', 'Redux', 'MobX', 'Svelte', 'Storybook', 'ES/Stylelint', 'JEST', 'NodeJS', 'ExpressJS', 'Koa', 'Prisma', 'NextJS', 'Profiling', 'Performance optimization']
   - title: Databases
-    skills: ['MySQL', 'CouchDB', 'MongoDB', 'Redis']
-  - title: iOS
-    skills: ['Swift', 'Objective C', 'Cocoapods', 'RxSwift', 'Realm', 'Core Data', 'App Store release', 'Crashlytics']
-  - title: Android
-    skills: ['Java', 'Gradle', 'Proguard', 'RxJava', 'Realm', 'Play Market release', 'Crashlytics']
+    skills: ['MySQL', 'PostgreSQL', 'Redis', 'MongoDB']
+  - title: Build
+    skills: ['Webpack', 'Vite', 'Gulp', 'Parcel', 'Rollup', 'NPM']
+  - title: DevOps
+    skills: ['Docker', 'AWS', 'Git', 'Unix', 'Bash', 'Nginx', 'Jenkins', 'Travis', 'Codefresh']
 experiences:
   - name: Netlify
     position: Staff Software Engineer
@@ -153,7 +149,7 @@ etc: >
 
   Like to drive anything has wheels - bicycles, cars, small planes.
 ---
-I'm an experienced full stack web developer and, in addition, developing iOS and Android applications from time to time. I have a solid understanding of algorithms and data structures and an experience in building scalable low-latency systems from scratch.
+I'm an experienced full stack web developer and, in addition, had developed iOS and Android applications. I have a solid understanding of algorithms and data structures and an experience in building scalable low-latency systems from scratch.
 
 Well motivated, have good self management and remote working skills, always opened for something new. Attended to various conferences in Ukraine, had experience to be speaker on few of them.
 
