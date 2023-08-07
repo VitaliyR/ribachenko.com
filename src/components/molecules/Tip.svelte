@@ -5,7 +5,7 @@
   export let title: string;
 </script>
 
-<Tooltip placement="top" targetElement={targetElement}>
+<Tooltip placement="top" {targetElement}>
   <div>
     {title}
   </div>

@@ -25,7 +25,7 @@
 
 <script lang="ts">
   export let type: ComponentType;
-  let componentProps: Record<string, any>;
+  let componentProps: Record<string, unknown>;
   let component: any;
   $: {
     component = MAP[type] as any;

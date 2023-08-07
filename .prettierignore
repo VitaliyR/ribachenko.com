@@ -8,6 +8,7 @@ node_modules
 !.env.example
 src/data
 config.ts
+**/*.scss
 
 # Ignore files for PNPM, NPM and YARN
 pnpm-lock.yaml

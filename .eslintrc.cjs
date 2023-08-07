@@ -1,16 +1,22 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
-  plugins: ['svelte3', '@typescript-eslint', 'prettier'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:svelte/recommended', 'prettier'],
+  plugins: ['@typescript-eslint'],
   ignorePatterns: ['*.cjs'],
-  overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3' }],
-  settings: {
-    'svelte3/typescript': () => require('typescript')
-  },
+  overrides: [
+    {
+      files: ['*.svelte'],
+      parser: 'svelte-eslint-parser',
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      }
+    }
+  ],
   parserOptions: {
     sourceType: 'module',
-    ecmaVersion: 2020
+    ecmaVersion: 2020,
+    extraFileExtensions: ['.svelte']
   },
   env: {
     browser: true,
@@ -20,7 +26,6 @@ module.exports = {
   rules: {
     semi: ['error', 'always'],
     'no-var': 'error',
-    'prettier/prettier': 'error',
     'eqeqeq': 'error',
     'no-alert': 'error',
     'no-caller': 'error',
@@ -80,6 +85,7 @@ module.exports = {
     'no-nested-ternary': 'error',
     'no-new-object': 'error',
     'no-trailing-spaces': 'error',
-    'prefer-object-spread': 'error'
+    'prefer-object-spread': 'error',
+    'svelte/no-at-html-tags': 0
   }
 };

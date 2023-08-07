@@ -93,16 +93,16 @@
       <h2 class="page-header__role">{data.about}</h2>
       <p class="page-header__description">
         {#if mode === 'full'}
-        <span><span>{upperFirst(data.gender)}</span>, <span>{new Date(Date.now() - data.birthday.getTime()).getFullYear() - 1970}</span></span>
-        <br />
+          <span><span>{upperFirst(data.gender)}</span>, <span>{new Date(Date.now() - data.birthday.getTime()).getFullYear() - 1970}</span></span>
+          <br />
         {/if}
         <span>{new Date(Date.now() - data.careerStartDate.getTime()).getFullYear() - 1970}</span> years experience
       </p>
     </div>
     {#if mode === 'full'}
-    <a class="link link--plain" href={data.logo} target="_blank" rel="noreferrer">
-      <Picture class="page-header__avatar" url={data.logo} alt={data.name} />
-    </a>
+      <a class="link link--plain" href={data.logo} target="_blank" rel="noreferrer">
+        <Picture class="page-header__avatar" url={data.logo} alt={data.name} />
+      </a>
     {/if}
   </header>
   <main class="main-container">

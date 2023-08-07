@@ -25,6 +25,7 @@
   rel={rel ?? (url.startsWith('/') ? undefined : 'noreferrer noopener')}
   {download}
   use:actionTip={tip ?? ''}
+  on:click
 >
   {#if icon}
     <Icon {icon} class="icon" />

@@ -37,7 +37,7 @@ jobs:
         run: sleep 5
 
       - name: Generate PDF
-        run: source ~/.nvm/nvm.sh && nvm use 16 && npm run get:pdf && cp ./static/cv.pdf ../latest/build/client
+        run: source ~/.nvm/nvm.sh && nvm use 16 && npm run get:pdf && cp ./static/cv.pdf ../latest/build/client && cp ./static/cv-short.pdf ../latest/build/client
 
       - name: Restart SSR once again
         run: source ~/.nvm/nvm.sh && nvm use 16 && pm2 restart ribachenko.com

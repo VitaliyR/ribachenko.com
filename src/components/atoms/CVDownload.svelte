@@ -55,21 +55,21 @@
 
 <div class="container" class:container--vertical={isVertical}>
   {#if pdf.length > 0}
-  <button type="button" class="button" on:click={onPrintClicked} bind:this={printButton}>
-    <Icon icon="print" />
-    Print
-  </button>
+    <button type="button" class="button" on:click={onPrintClicked} bind:this={printButton}>
+      <Icon icon="print" />
+      Print
+    </button>
   {/if}
   {#if isPrintDropdownVisible && pdf.length > 0}
-  <Tooltip targetElement={printButton} placement="bottom" sameWidth>
-    <div class="buttons-tooltip" use:closable={{ skip: [printButton] }} on:close={() => (isPrintDropdownVisible = false)}>
-      {#each pdf as file}
-      <button type="button" class="button button-secondary" on:click={() => print(file.url)} use:tip={file.description ?? ''}>
-        {file.label}
-      </button>
-      {/each}
-    </div>
-  </Tooltip>
+    <Tooltip targetElement={printButton} placement="bottom" sameWidth>
+      <div class="buttons-tooltip" use:closable={{ skip: [printButton] }} on:close={() => (isPrintDropdownVisible = false)}>
+        {#each pdf as file}
+          <button type="button" class="button button-secondary" on:click={() => print(file.url)} use:tip={file.description ?? ''}>
+            {file.label}
+          </button>
+        {/each}
+      </div>
+    </Tooltip>
   {/if}
 
   {#if pdf.length === 1}
@@ -80,13 +80,20 @@
       Download
     </button>
     {#if isDownloadDropdownVisible}
-    <Tooltip targetElement={downloadButton} placement="bottom" sameWidth>
-      <div class="buttons-tooltip" use:closable={{ skip: [downloadButton] }} on:close={() => (isDownloadDropdownVisible = false)}>
-        {#each pdf as file}
-        <Link url={file.url} class="button button-secondary" title={file.label} download={[name || '', 'CV.pdf'].join(' ')} tip={file.description ?? ''} />
-        {/each}
-      </div>
-    </Tooltip>
+      <Tooltip targetElement={downloadButton} placement="bottom" sameWidth>
+        <div class="buttons-tooltip" use:closable={{ skip: [downloadButton] }} on:close={() => (isDownloadDropdownVisible = false)}>
+          {#each pdf as file}
+            <Link
+              url={file.url}
+              class="button button-secondary"
+              title={file.label}
+              download={[name || '', 'CV.pdf'].join(' ')}
+              tip={file.description ?? ''}
+              on:click={() => (isDownloadDropdownVisible = !isDownloadDropdownVisible)}
+            />
+          {/each}
+        </div>
+      </Tooltip>
     {/if}
   {/if}
 </div>
