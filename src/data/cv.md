@@ -3,7 +3,13 @@ layout: CVLayout
 name: Vitalii Rybachenko
 about: Full Stack Developer
 logo: /assets/logo.jpg
-pdfUrl: /cv.pdf
+pdf:
+  - label: Full
+    description: Full version of the CV as you seeing it on this page
+    url: /cv.pdf
+  - label: Short
+    description: Shorter version of CV with just important things
+    url: /cv-short.pdf
 gender: male
 birthday: '1993-11-21'
 careerStartDate: '2010-11-01'

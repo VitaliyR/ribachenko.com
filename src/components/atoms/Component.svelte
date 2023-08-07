@@ -25,9 +25,12 @@
 
 <script lang="ts">
   export let type: ComponentType;
-  $: componentProps = omitBy($$props, (value, key) => key === 'type' || typeof value === 'undefined');
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  $: component = MAP[type] as any;
+  let componentProps: Record<string, any>;
+  let component: any;
+  $: {
+    component = MAP[type] as any;
+    componentProps = omitBy($$props, (value, key) => key === 'type' || typeof value === 'undefined');
+  }
 </script>
 
 <svelte:component this={component} {...componentProps} />

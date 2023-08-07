@@ -1,14 +1,25 @@
 <script lang="ts">
+  import { closable } from '../../actions/closable';
+  import { tip } from '../../actions/tip';
   import Icon from './Icon.svelte';
   import Link from './Link.svelte';
+  import Tooltip from './Tooltip.svelte';
 
-  export let pdfUrl: string | undefined = undefined;
+  export let pdf: {
+    label: string;
+    url: string;
+    description?: string;
+  }[] = [];
   export let isVertical = false;
   export let name: string | undefined = undefined;
 
+  let printButton: HTMLButtonElement;
+  let downloadButton: HTMLButtonElement;
+  let isPrintDropdownVisible = false;
+  let isDownloadDropdownVisible = false;
   let printIframe: HTMLIFrameElement | undefined;
 
-  const printPdf = () => {
+  const printPdf = (pdfUrl: string) => {
     try {
       setTimeout(() => {
         printIframe?.focus();
@@ -19,27 +30,64 @@
     }
   };
 
-  const print = () => {
-    if (printIframe) {
-      printPdf();
-    } else if (pdfUrl) {
+  const print = (pdfUrl: string) => {
+    isPrintDropdownVisible = false;
+
+    if (!printIframe) {
       printIframe = document.createElement('iframe');
-      printIframe.setAttribute('src', pdfUrl);
       printIframe.setAttribute('class', 'u-hidden');
-      printIframe.onload = printPdf;
-      printIframe.onerror = printPdf;
       document.body.appendChild(printIframe);
+    }
+
+    printIframe.setAttribute('src', pdfUrl);
+    printIframe.onload = () => printPdf(pdfUrl);
+    printIframe.onerror = () => printPdf(pdfUrl);
+  };
+
+  const onPrintClicked = () => {
+    if (pdf.length === 1) {
+      print(pdf[0].url);
+    } else if (pdf.length > 0) {
+      isPrintDropdownVisible = !isPrintDropdownVisible;
     }
   };
 </script>
 
 <div class="container" class:container--vertical={isVertical}>
-  <button type="button" class="button" on:click={print}>
+  {#if pdf.length > 0}
+  <button type="button" class="button" on:click={onPrintClicked} bind:this={printButton}>
     <Icon icon="print" />
     Print
   </button>
-  {#if pdfUrl}
-    <Link url={pdfUrl} class="button" icon="download" title="Download" download={[name || '', 'CV.pdf'].join(' ')} />
+  {/if}
+  {#if isPrintDropdownVisible && pdf.length > 0}
+  <Tooltip targetElement={printButton} placement="bottom" sameWidth>
+    <div class="buttons-tooltip" use:closable={{ skip: [printButton] }} on:close={() => (isPrintDropdownVisible = false)}>
+      {#each pdf as file}
+      <button type="button" class="button button-secondary" on:click={() => print(file.url)} use:tip={file.description ?? ''}>
+        {file.label}
+      </button>
+      {/each}
+    </div>
+  </Tooltip>
+  {/if}
+
+  {#if pdf.length === 1}
+    <Link url={pdf[0].url} class="button" icon="download" title="Download" download={[name || '', 'CV.pdf'].join(' ')} />
+  {:else if pdf.length > 1}
+    <button type="button" class="button" on:click={() => (isDownloadDropdownVisible = !isDownloadDropdownVisible)} bind:this={downloadButton}>
+      <Icon icon="download" />
+      Download
+    </button>
+    {#if isDownloadDropdownVisible}
+    <Tooltip targetElement={downloadButton} placement="bottom" sameWidth>
+      <div class="buttons-tooltip" use:closable={{ skip: [downloadButton] }} on:close={() => (isDownloadDropdownVisible = false)}>
+        {#each pdf as file}
+        <Link url={file.url} class="button button-secondary" title={file.label} download={[name || '', 'CV.pdf'].join(' ')} tip={file.description ?? ''} />
+        {/each}
+      </div>
+    </Tooltip>
+    {/if}
   {/if}
 </div>
 
@@ -47,6 +95,7 @@
   .container {
     display: flex;
     flex-flow: row nowrap;
+    gap: var(--space);
 
     @media print {
       display: none;
@@ -65,11 +114,7 @@
       font: var(--typography-body-cv);
       min-width: 160px;
       border: 0;
-      margin-right: var(--space);
-
-      &:last-child {
-        margin-right: 0;
-      }
+      gap: var(--space);
 
       &:hover {
         background: var(--color-accent-light);
@@ -79,20 +124,24 @@
     :global(.button svg) {
       width: 24px;
       height: 24px;
-      margin-right: var(--space);
     }
 
     &--vertical {
       flex-flow: column nowrap;
     }
 
-    &--vertical :global(.button) {
-      margin-right: 0;
-      margin-bottom: var(--space);
-
-      &:last-child {
-        margin-bottom: 0;
-      }
+    :global(.button-secondary) {
+      background: transparent;
+      border: 1px solid var(--color-text-accent);
+      color: var(--color-text-primary);
     }
+  }
+
+  .buttons-tooltip {
+    background: var(--color-background);
+    padding: var(--space);
+    display: flex;
+    flex-flow: column nowrap;
+    gap: var(--space);
   }
 </style>

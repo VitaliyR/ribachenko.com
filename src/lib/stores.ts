@@ -4,10 +4,12 @@ import type { MastodonRequestEntry } from '../routes/api/mastodon/types';
 
 export type MetaStore = {
   pages: Record<string, Page>;
+  searchParams: URLSearchParams;
 };
 
 export const metaStore = writable<MetaStore>({
-  pages: {}
+  pages: {},
+  searchParams: new URLSearchParams()
 });
 
 export type MastodonStore = {

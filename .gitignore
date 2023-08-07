@@ -9,3 +9,4 @@ node_modules
 src/config.ts
 static/g
 static/cv.pdf
+static/cv-short.pdf

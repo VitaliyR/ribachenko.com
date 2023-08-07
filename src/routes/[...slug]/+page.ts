@@ -12,7 +12,7 @@ const parseDates = (obj: any) =>
     return value;
   });
 
-export async function load({ fetch, params }: LoadEvent) {
+export async function load({ fetch, params, url }: LoadEvent) {
   const { slug } = params;
 
   const response = await fetch(`/api/page?slug=${encodeURIComponent(slug ?? '')}`);
@@ -40,7 +40,8 @@ export async function load({ fetch, params }: LoadEvent) {
     data: parseDates(data.attributes),
     body: data.body,
     meta: {
-      pages: parseDates(data.__meta.pages)
+      pages: parseDates(data.__meta.pages),
+      searchParams: url.searchParams
     },
     mastodonData,
     slug

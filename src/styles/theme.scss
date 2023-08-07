@@ -10,11 +10,13 @@
   --color-mid-tint: #cfcfcf;
   --color-tint: #ebf2f6;
   --color-accent: #0092bf;
-  --color-accent-light: rgba(0, 146, 191, 0.5);
+  --color-accent-light: #0092bf80;
   --color-accent-dark: #00627d;
 
   --space: 8px;
   --border-radius: 4px;
+
+  --shadow-level-1: 0 2px 8px color-mix(in srgb, #000 50%, transparent);
 
   --line-height-xxs: 17px;
   --line-height-xs: 22px;
@@ -61,6 +63,8 @@
     --color-tint: #676b6d;
     --color-accent-light: rgb(0, 146, 191, 0.5);
     --color-accent-dark: #676b6d;
+
+    --shadow-level-1: 0 2px 8px color-mix(in srgb, #fff 25%, transparent);
   }
 }
 

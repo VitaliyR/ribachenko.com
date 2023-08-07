@@ -44,6 +44,7 @@
   import CVDownload from '../atoms/CVDownload.svelte';
   import ThemeButton from '../atoms/ThemeButton.svelte';
   import { parseMarkdown } from '$lib/md-utils';
+  import { metaStore } from '../../lib/stores';
   import siteConfig from '../../data/config.json';
 
   export let slug: string;
@@ -60,9 +61,16 @@
     skills?: SkillGroup[];
     experiences?: Experience[];
     educations?: Education[];
-    pdfUrl?: string;
+    pdf?: {
+      label: string;
+      url: string;
+      description?: string;
+    }[];
     etc?: string;
   };
+
+  let mode: 'full' | 'short';
+  $: mode = $metaStore.searchParams.has('short') ? 'short' : 'full';
 
   const replaceContactInfo = (text: string) =>
     text
@@ -84,14 +92,18 @@
       <h1 class="page-header__title">{data.name}</h1>
       <h2 class="page-header__role">{data.about}</h2>
       <p class="page-header__description">
-        <span>{upperFirst(data.gender)}</span>, <span>{new Date(Date.now() - data.birthday.getTime()).getFullYear() - 1970}</span>
+        {#if mode === 'full'}
+        <span><span>{upperFirst(data.gender)}</span>, <span>{new Date(Date.now() - data.birthday.getTime()).getFullYear() - 1970}</span></span>
         <br />
+        {/if}
         <span>{new Date(Date.now() - data.careerStartDate.getTime()).getFullYear() - 1970}</span> years experience
       </p>
     </div>
+    {#if mode === 'full'}
     <a class="link link--plain" href={data.logo} target="_blank" rel="noreferrer">
       <Picture class="page-header__avatar" url={data.logo} alt={data.name} />
     </a>
+    {/if}
   </header>
   <main class="main-container">
     <div class="two-column-container">
@@ -148,7 +160,7 @@
             {/each}
           </ul>
           <div class="download-sidebar-container">
-            <CVDownload pdfUrl={data.pdfUrl} name={data.name} isVertical />
+            <CVDownload pdf={data.pdf} name={data.name} isVertical />
           </div>
         </section>
       </div>
@@ -207,7 +219,7 @@
         </ul>
       </section>
 
-      {#if data.etc}
+      {#if data.etc && mode === 'full'}
         <section class="section">
           <h2 class="section-title">Etc</h2>
           <div class="etc-content">
@@ -217,7 +229,7 @@
       {/if}
 
       <section class="section footer">
-        <CVDownload pdfUrl={data.pdfUrl} name={data.name} />
+        <CVDownload pdf={data.pdf} name={data.name} />
       </section>
     </div>
   </main>

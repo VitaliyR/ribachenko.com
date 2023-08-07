@@ -5,6 +5,10 @@ const PDFs = [
   {
     url: new URL('cv', config.localUrl).toString(),
     file: 'static/cv.pdf'
+  },
+  {
+    url: new URL('cv?short', config.localUrl).toString(),
+    file: 'static/cv-short.pdf'
   }
 ];
 
@@ -13,9 +17,9 @@ const pdf = async function pdf() {
     headless: true,
     args: ['--font-render-hinting=none']
   });
-  const page = await browser.newPage();
 
   const jobs = PDFs.map(async (task) => {
+    const page = await browser.newPage();
     await page.goto(task.url, { waitUntil: 'networkidle0' });
     await page.pdf({
       path: task.file,
