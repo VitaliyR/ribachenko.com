@@ -138,7 +138,7 @@
     }
 
     :global(.button-secondary) {
-      background: transparent;
+      background: var(--color-background);
       border: 1px solid var(--color-text-accent);
       color: var(--color-text-primary);
     }
@@ -146,7 +146,6 @@
 
   .buttons-tooltip {
     background: var(--color-background);
-    padding: var(--space);
     display: flex;
     flex-flow: column nowrap;
     gap: var(--space);
