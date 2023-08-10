@@ -25,10 +25,11 @@
 
 <script lang="ts">
   export let type: ComponentType;
+
   let componentProps: Record<string, unknown>;
   let component: any;
   $: {
-    component = MAP[type] as any;
+    component = MAP[type];
     componentProps = omitBy($$props, (value, key) => key === 'type' || typeof value === 'undefined');
   }
 </script>

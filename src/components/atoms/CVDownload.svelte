@@ -1,6 +1,7 @@
 <script lang="ts">
   import { closable } from '../../actions/closable';
   import { tip } from '../../actions/tip';
+  import { iOS } from '../../lib/utils';
   import Icon from './Icon.svelte';
   import Link from './Link.svelte';
   import Tooltip from './Tooltip.svelte';
@@ -32,6 +33,12 @@
 
   const print = (pdfUrl: string) => {
     isPrintDropdownVisible = false;
+
+    if (iOS()) {
+      // ios safari displays only 1 page pdf in iframe
+      window.open(pdfUrl, '_blank');
+      return;
+    }
 
     if (!printIframe) {
       printIframe = document.createElement('iframe');

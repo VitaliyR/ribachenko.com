@@ -17,3 +17,8 @@ export const getPostDescription = (body: string, length = 80) =>
     .replace(/<\/?.+?>/gm, '')
     .trim()
     .slice(0, length)}...`;
+
+export const iOS = () =>
+  ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(navigator.platform) ||
+  // iPad on iOS 13 detection
+  (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
