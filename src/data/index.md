@@ -8,7 +8,7 @@ components:
 
 
       Traveling [Forgotten Realms](https://en.wikipedia.org/wiki/Forgotten_Realms), adore driving everything
-      [has wheels](https://ribachenko.com/res/plane.jpg), yet another [Apple](https://www.apple.com/) fanboy.
+      [has wheels](https://ribachenko.com/assets/plane.jpg), yet another [Apple](https://www.apple.com/) fanboy.
 
 
       Originally from [Vinnytsia, Ukraine](https://www.google.com/maps/search/?api=1&query=49.233243,28.47012).
