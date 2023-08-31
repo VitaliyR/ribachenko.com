@@ -51,9 +51,13 @@
   --typography-title-thin: var(--font-size-xl) / var(--line-height-xl) var(--font-family-regular);
 
   --transition: 0.25s ease-in-out;
+
+  color-scheme: light;
 }
 
 :root.scheme-dark {
+  color-scheme: dark;
+
   @media screen {
     --color-background: #2f2f31;
     --color-text-primary: #ddd;
