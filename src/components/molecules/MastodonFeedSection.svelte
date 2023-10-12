@@ -160,8 +160,11 @@
       margin: 0;
     }
 
-    :global(a) {
-      line-break: anywhere;
+    @media (--phone) {
+      :global(a),
+      :global(p) {
+        line-break: anywhere;
+      }
     }
   }
 
