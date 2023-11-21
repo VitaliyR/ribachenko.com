@@ -146,6 +146,7 @@
   .item-contents-container {
     display: flex;
     flex-flow: column nowrap;
+    gap: var(--space);
 
     &.entire-line {
       flex-flow: row nowrap;
