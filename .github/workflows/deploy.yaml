@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install packages
-        run: source ~/.nvm/nvm.sh && nvm use 16 && npm install
+        run: source ~/.nvm/nvm.sh && nvm use 18 && npm install
 
       - name: 'Create env file'
         run: |
@@ -25,19 +25,19 @@ jobs:
           cat .env
 
       - name: Build app
-        run: source ~/.nvm/nvm.sh && nvm use 16 && NODE_ENV=production CONFIG_ENV=prod npm run build
+        run: source ~/.nvm/nvm.sh && nvm use 18 && NODE_ENV=production CONFIG_ENV=prod npm run build
 
       - name: Replace app
         run: cd ../ && rm -rf build && cp -r ${{ github.event.repository.name }} build && rm -rf latest && ln -s build latest
 
       - name: Restart SSR
-        run: source ~/.nvm/nvm.sh && nvm use 16 && pm2 restart ribachenko.com
+        run: source ~/.nvm/nvm.sh && nvm use 18 && pm2 restart ribachenko.com
 
       - name: Wait 5s
         run: sleep 5
 
       - name: Generate PDF
-        run: source ~/.nvm/nvm.sh && nvm use 16 && npm run get:pdf && cp ./static/cv.pdf ../latest/build/client && cp ./static/cv-short.pdf ../latest/build/client
+        run: source ~/.nvm/nvm.sh && nvm use 18 && npm run get:pdf && cp ./static/cv.pdf ../latest/build/client && cp ./static/cv-short.pdf ../latest/build/client
 
       - name: Restart SSR once again
-        run: source ~/.nvm/nvm.sh && nvm use 16 && pm2 restart ribachenko.com
+        run: source ~/.nvm/nvm.sh && nvm use 18 && pm2 restart ribachenko.com
