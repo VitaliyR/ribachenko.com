@@ -23,7 +23,7 @@
 <SEO {slug} />
 <div class={classNames('page', className)}>
   <LandingHeader />
-  <div class="main-container">
+  <main class="main-container">
     {#each data.components ?? [] as component}
       <Component {...component} />
     {/each}
@@ -35,7 +35,7 @@
     <div class="u-show-tablet footer">
       © {new Date().getFullYear()}
     </div>
-  </div>
+  </main>
 </div>
 
 <style lang="scss">
