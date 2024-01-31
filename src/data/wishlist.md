@@ -15,7 +15,7 @@ components:
         items:
           - icon: 💳
             url: https://send.monobank.com.ua/2BgRGaJ9q?f
-            title: Send me money from any card
+            title: Buy me a coffee
       - title: Tech
         items:
           - icon: 🎮
