@@ -1,4 +1,4 @@
-export type Page = Record<string, any> & {
+export type Page = Record<string, unknown> & {
   body: string;
 };
 

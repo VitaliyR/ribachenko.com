@@ -2,7 +2,7 @@ import { redirect, type LoadEvent } from '@sveltejs/kit';
 import { deepForEach, deepMap } from '$lib/code-utils';
 import type { MastodonRequestEntry } from '../api/mastodon/types';
 
-const parseDates = (obj: any) =>
+const parseDates = (obj: Record<string, unknown>) =>
   deepMap(obj, (value) => {
     if (typeof value === 'string' && value.endsWith('Z') && value.match(/^\d/)) {
       return new Date(value);
