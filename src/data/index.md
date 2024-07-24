@@ -13,6 +13,8 @@ components:
 
       Originally from [Vinnytsia, Ukraine](https://www.google.com/maps/search/?api=1&query=49.233243,28.47012).
       If you want make surprise but don't know what to present me, take a look at my [wishlist page](/wishlist).
+      My name pronunciation is tricky thanks to the cyrillic-latin transliteration, you can hear the right
+      version [here](/sounds/name.mp3).
 
 
       **Staff Software Engineer** @ [Netlify](https://netlify.com/).

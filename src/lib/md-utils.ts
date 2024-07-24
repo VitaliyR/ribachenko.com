@@ -13,7 +13,7 @@ const markedRenderer = new marked.Renderer();
 
 markedRenderer.link = function (href, title, text) {
   const link = marked.Renderer.prototype.link.call(this, href, title, text);
-  if (href?.startsWith('http')) {
+  if (href?.startsWith('http') || href?.match(/\.\w+$/)) {
     return link.replace('<a', `<a target="_blank" rel="noreferrer noopener"`);
   }
   return link;
@@ -22,7 +22,7 @@ markedRenderer.link = function (href, title, text) {
 marked.setOptions({
   renderer: markedRenderer,
 
-  highlight(code, lang) {
+  highlight(code: string, lang: string) {
     const finalLang = Prism.languages[lang] ? lang : 'js';
     const langDef = Prism.languages[finalLang];
     return Prism.highlight(code, langDef, finalLang);
