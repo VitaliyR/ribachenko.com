@@ -24,4 +24,12 @@ components:
           - icon: 🎮
             url: https://www.amazon.com/Fosmon-Controller-Compatible-Charging-Rechargeable/dp/B01CDCG4KM/?crid=19VQABUSO65EF&sprefix=xbox+charging+stati,aps,107
             title: Xbox Controller Charging Station (or similar)
+      - title: Car
+        items:
+          - icon: 🔌
+            url: https://shop.tesla.com/product/mobile-connector
+            title: Tesla mobile connector
+          - icon: 🔌
+            url: https://shop.tesla.com/product/ccs-combo-1-adapter?web=true
+            title: Tesla CCS Combo 1 Adapter
 ---
