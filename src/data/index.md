@@ -29,11 +29,11 @@ components:
         image: /assets/projects/stackbit.png
         imageDark: /assets/projects/stackbit-dark.png
         href: https://stackbit.com
-      - title: Julia Fishka
+      - title: Yuliia Fishka
         description: Food expert & blogger, author of food courses and my beloved wife. I'm providing IT support for all projects
         image: /assets/projects/julia.png
         imageDark: /assets/projects/julia-dark.png
-        href: https://juliafishka.com
+        href: https://yuliiafishka.com
       - title: Sprut
         description: Taxi ordering service in Ukraine. Available for iOS and Android, and also there are separate apps for drivers
         image: /assets/projects/sprut.png
