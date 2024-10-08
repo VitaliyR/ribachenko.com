@@ -24,6 +24,12 @@ components:
           - icon: 🎮
             url: https://www.amazon.com/Fosmon-Controller-Compatible-Charging-Rechargeable/dp/B01CDCG4KM/?crid=19VQABUSO65EF&sprefix=xbox+charging+stati,aps,107
             title: Xbox Controller Charging Station (or similar)
+          - icon: 🔋
+            url: https://shop.tesla.com/product/wireless-portable-charger
+            title: Tesla Portable Charger
+          - icon: 💨
+            url: https://amazon.com/DENVIX-Inflator-Portable-Compressor-Inflation/dp/B0CC1FLWXP
+            title: Inflater
       - title: Car
         items:
           - icon: 🔌
