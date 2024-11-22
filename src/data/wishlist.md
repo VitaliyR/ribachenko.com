@@ -21,9 +21,6 @@ components:
             title: Hat
       - title: Tech
         items:
-          - icon: 🎮
-            url: https://www.amazon.com/Fosmon-Controller-Compatible-Charging-Rechargeable/dp/B01CDCG4KM/?crid=19VQABUSO65EF&sprefix=xbox+charging+stati,aps,107
-            title: Xbox Controller Charging Station (or similar)
           - icon: 🔋
             url: https://shop.tesla.com/product/wireless-portable-charger
             title: Tesla Portable Charger
@@ -32,9 +29,6 @@ components:
             title: Inflater
       - title: Car
         items:
-          - icon: 🔌
-            url: https://shop.tesla.com/product/mobile-connector
-            title: Tesla mobile connector
           - icon: 🔌
             url: https://shop.tesla.com/product/ccs-combo-1-adapter?web=true
             title: Tesla CCS Combo 1 Adapter
