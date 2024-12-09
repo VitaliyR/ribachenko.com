@@ -32,16 +32,10 @@ components:
             title: Inflater
       - title: Car
         items:
-          - icon: 🔌
-            url: https://shop.tesla.com/product/ccs-combo-1-adapter?web=true
-            title: Tesla CCS Combo 1 Adapter
           - icon: 🛞
             url: https://3dmatsusa.com/collections/custom-fit-car-floor-liners/products/kagu-cargo-liner?model=MjAyNEBURVNMQUBNT0RFTCBZ
             title: Tesla Trunk Mat
           - icon: 🛞
             url: https://3dmatsusa.com/collections/custom-fit-car-floor-liners/products/seatback-protector?model=MjAyNEBURVNMQUBNT0RFTCBZ
             title: Tesla Backset Cover Mats
-          - icon: 🛞
-            url: https://3dmatsusa.com/collections/custom-fit-car-floor-liners/products/kagu-frunk-cargo-liner?model=MjAyNEBURVNMQUBNT0RFTCBZ
-            title: Tesla Frunk Mat
 ---
