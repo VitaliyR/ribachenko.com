@@ -27,9 +27,6 @@ components:
           - icon: 🔋
             url: https://shop.tesla.com/product/wireless-portable-charger
             title: Tesla Portable Charger
-          - icon: 💨
-            url: https://amazon.com/DENVIX-Inflator-Portable-Compressor-Inflation/dp/B0CC1FLWXP
-            title: Inflater
       - title: Car
         items:
           - icon: 🛞
