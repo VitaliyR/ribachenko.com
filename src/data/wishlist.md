@@ -27,12 +27,4 @@ components:
           - icon: 🔋
             url: https://shop.tesla.com/product/wireless-portable-charger
             title: Tesla Portable Charger
-      - title: Car
-        items:
-          - icon: 🛞
-            url: https://3dmatsusa.com/collections/custom-fit-car-floor-liners/products/kagu-cargo-liner?model=MjAyNEBURVNMQUBNT0RFTCBZ
-            title: Tesla Trunk Mat
-          - icon: 🛞
-            url: https://3dmatsusa.com/collections/custom-fit-car-floor-liners/products/seatback-protector?model=MjAyNEBURVNMQUBNT0RFTCBZ
-            title: Tesla Backset Cover Mats
 ---
