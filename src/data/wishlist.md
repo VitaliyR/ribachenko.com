@@ -24,7 +24,4 @@ components:
           - icon: 💾
             title: Xbox Storage Expansion
             url: https://www.bestbuy.com/site/seagate-2tb-storage-expansion-card-for-xbox-series-xs-internal-nvme-ssd-black/6477864.p
-          - icon: 🔋
-            url: https://shop.tesla.com/product/wireless-portable-charger
-            title: Tesla Portable Charger
 ---
