@@ -24,4 +24,7 @@ components:
           - icon: 💾
             title: Xbox Storage Expansion
             url: https://www.bestbuy.com/site/seagate-2tb-storage-expansion-card-for-xbox-series-xs-internal-nvme-ssd-black/6477864.p
+          - icon: 🎮
+            title: Xbox Elite Controller
+            url: https://xboxdesignlab.xbox.com/en-us/xbox-elite-wireless-controller-series-2?recipeId=NYV98E3R
 ---
