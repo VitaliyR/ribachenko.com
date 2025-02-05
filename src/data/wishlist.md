@@ -27,4 +27,7 @@ components:
           - icon: 🎮
             title: Xbox Elite Controller
             url: https://xboxdesignlab.xbox.com/en-us/xbox-elite-wireless-controller-series-2?recipeId=NYV98E3R
+          - icon: 💿
+            title: Kingdom Come: Deliverance II Gold Edition
+            url: https://www.xbox.com/en-US/games/store/kingdom-come-deliverance-ii-gold-edition/9PBHX1S4DGZ4
 ---
