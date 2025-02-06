@@ -30,4 +30,7 @@ components:
           - icon: 💿
             title: "Kingdom Come: Deliverance II Gold Edition"
             url: https://www.xbox.com/en-US/games/store/kingdom-come-deliverance-ii-gold-edition/9PBHX1S4DGZ4
+          - icon: 💨
+            title: Air Duster
+            url: https://www.amazon.com/Compressed-Adjustable-100000RPM-Rechargeable-Cleaning/dp/B0CFQC4DB3
 ---
