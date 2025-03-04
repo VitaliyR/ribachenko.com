@@ -16,9 +16,6 @@ components:
           - icon: 💳
             url: https://send.monobank.com.ua/2BgRGaJ9q?f
             title: Buy me a coffee
-          - icon: 🧢
-            url: https://shop.tesla.com/product/relaxed-t-logo-hat
-            title: Hat
       - title: Tech
         items:
           - icon: 💾
