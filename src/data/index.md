@@ -24,6 +24,11 @@ components:
     title: Projects
     hasBorder: true
     cards:
+      - title: Netlify
+        description: Enable the world's developers to create and unlock the power of the web
+        image: /assets/projects/netlify.png
+        imageDark: /assets/projects/netlify-dark.png
+        href: https://netlify.com
       - title: Stackbit
         description: Easiest way to create your own site with the best tools is Stackbit - first open, complete platform for the Jamstack
         image: /assets/projects/stackbit.png

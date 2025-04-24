@@ -33,4 +33,7 @@ components:
           - icon: 🎮
             title: Razer Kishi Ultra
             url: https://www.amazon.com/dp/B0CXGMPLWK
+          - icon: 🎧
+            title: Apple Earbuds USB-C
+            url: https://www.apple.com/shop/product/MYQY3AM/A/earpods-usb-c
 ---
