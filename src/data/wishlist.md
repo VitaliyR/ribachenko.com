@@ -36,4 +36,7 @@ components:
           - icon: 🎧
             title: Apple Earbuds USB-C
             url: https://www.apple.com/shop/product/MYQY3AM/A/earpods-usb-c
+          - icon: 🔐
+            title: Ledger Flex
+            url: https://shop.ledger.com/products/ledger-flex/btc-orange
 ---
