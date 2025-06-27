@@ -4,7 +4,7 @@ export const Mime: Record<string, string> = {
   shtml: 'text/html',
   css: 'text/css',
   xml: 'text/xml',
-  gif: 'text/xml',
+  gif: 'image/gif',
   js: 'application/x-javascript',
   rss: 'application/rss+xml',
   txt: 'text/plain',
@@ -15,7 +15,7 @@ export const Mime: Record<string, string> = {
   tif: 'image/tiff',
   tiff: 'image/tiff',
   wbmp: 'image/vnd.wap.wbmp',
-  icon: 'image/x-icon',
+  ico: 'image/x-icon',
   jng: 'image/x-jng',
   bmp: 'image/x-ms-bmp',
   svg: 'image/svg+xml'
