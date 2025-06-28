@@ -62,7 +62,7 @@ skills:
     skills: ['Docker', 'AWS', 'Git', 'Unix', 'Bash', 'Nginx', 'Jenkins', 'Travis', 'Codefresh']
 experiences:
   - name: Netlify
-    position: Staff Software Engineer
+    position: Senior Staff Software Engineer
     location: (Boston, MA, USA) Remote
     dateStart: '2023-07-31'
     description: >

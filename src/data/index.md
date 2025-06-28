@@ -17,7 +17,7 @@ components:
       version [here](/sounds/name.mp3).
 
 
-      **Staff Software Engineer** @ [Netlify](https://netlify.com/).
+      **Senior Staff Software Engineer** @ [Netlify](https://netlify.com/).
 
       Read more in my [CV](/cv).
   - type: CardsListSection
