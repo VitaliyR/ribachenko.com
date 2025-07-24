@@ -33,9 +33,6 @@ components:
           - icon: 🎮
             title: Razer Kishi Ultra
             url: https://www.amazon.com/dp/B0CXGMPLWK
-          - icon: 🔐
-            title: Ledger Flex
-            url: https://shop.ledger.com/products/ledger-flex/btc-orange
           - icon: 🤳
             title: Snap Grip
             url: https://ohsnap.com/products/snap-grip?variant=44185197478079
