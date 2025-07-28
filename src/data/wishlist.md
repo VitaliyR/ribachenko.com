@@ -30,9 +30,6 @@ components:
           - icon: 💨
             title: Air Duster
             url: https://www.amazon.com/Compressed-Adjustable-100000RPM-Rechargeable-Cleaning/dp/B0CFQC4DB3
-          - icon: 🎮
-            title: Razer Kishi Ultra
-            url: https://www.amazon.com/dp/B0CXGMPLWK
           - icon: 🤳
             title: Snap Grip
             url: https://ohsnap.com/products/snap-grip?variant=44185197478079
