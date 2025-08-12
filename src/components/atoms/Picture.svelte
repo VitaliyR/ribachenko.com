@@ -13,7 +13,7 @@
   let className = '';
   export { className as class };
 
-  // if has darkUrl - wait for client to determinate which picture to load
+  // if urlDark is provided, wait for the client to determine which picture to load
   let isVisible = !urlDark;
   let isDarkMode = false;
 
