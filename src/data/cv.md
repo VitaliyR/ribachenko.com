@@ -63,7 +63,7 @@ skills:
 experiences:
   - name: Netlify
     position: Senior Staff Software Engineer
-    location: (Boston, MA, USA) Remote
+    location: (Boston, MA, USA; West Palm Beach, FL, USA) Remote
     dateStart: '2023-07-31'
     description: >
       After Stackbit has been acquired by Netlify, continue to improve and evolve the Studio.
