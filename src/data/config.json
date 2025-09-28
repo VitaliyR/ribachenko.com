@@ -4,6 +4,10 @@
   "about": "Full Stack Developer",
   "twitterAccount": "@Sa1en",
   "logo": "/assets/logo.jpg",
+  "quickLinks": {
+    "wa": "https://api.whatsapp.com/send/?phone=380632886003&text&type=phone_number&app_absent=0",
+    "tg": "https://telegram.me/salen"
+  },
   "currentPlace": {
     "lat": 26.7335441,
     "lng": -80.1140093,

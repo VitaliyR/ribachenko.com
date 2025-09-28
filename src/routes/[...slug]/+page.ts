@@ -1,6 +1,7 @@
 import { redirect, type LoadEvent } from '@sveltejs/kit';
 import { deepForEach, deepMap } from '$lib/code-utils';
 import type { MastodonRequestEntry } from '../api/mastodon/types';
+import config from '../../data/config.json';
 
 const parseDates = (obj: Record<string, unknown>) =>
   deepMap(obj, (value) => {
@@ -15,11 +16,15 @@ const parseDates = (obj: Record<string, unknown>) =>
 export async function load({ fetch, params, url }: LoadEvent) {
   const { slug } = params;
 
+  const redirectUrl = config.quickLinks[slug as keyof typeof config.quickLinks];
+  if (redirectUrl) {
+    throw redirect(302, redirectUrl);
+  }
+
   const response = await fetch(`/api/page?slug=${encodeURIComponent(slug ?? '')}`);
   const data = await response.json();
 
   if (!data.attributes && data.__meta.pages['404.md']) {
-    // means no page
     throw redirect(302, '/404');
   }
 
