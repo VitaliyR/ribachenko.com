@@ -27,10 +27,4 @@ components:
           - icon: 💿
             title: "Indiana Jones and the Great Circle"
             url: https://www.xbox.com/en-US/games/store/indiana-jones-and-the-great-circle/9N8FQ28Z6QX3/0010
-          - icon: 💨
-            title: Air Duster
-            url: https://www.amazon.com/Compressed-Adjustable-100000RPM-Rechargeable-Cleaning/dp/B0CFQC4DB3
-          - icon: 🤳
-            title: Snap Grip
-            url: https://ohsnap.com/products/snap-grip?variant=44185197478079
 ---
