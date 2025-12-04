@@ -18,6 +18,9 @@ components:
             title: Buy me a coffee
       - title: Tech
         items:
+          - icon: 🎮
+            title: Steam Deck 512GB
+            url: https://store.steampowered.com/steamdeck
           - icon: 💾
             title: Xbox Storage Expansion
             url: https://www.bestbuy.com/site/seagate-2tb-storage-expansion-card-for-xbox-series-xs-internal-nvme-ssd-black/6477864.p
