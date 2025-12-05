@@ -19,15 +19,14 @@ components:
       - title: Tech
         items:
           - icon: 🎮
-            title: Steam Deck 512GB
+            title: Steam Deck OLED 1TB
             url: https://store.steampowered.com/steamdeck
           - icon: 💾
+            hidden: true
             title: Xbox Storage Expansion
             url: https://www.bestbuy.com/site/seagate-2tb-storage-expansion-card-for-xbox-series-xs-internal-nvme-ssd-black/6477864.p
           - icon: 🎮
+            hidden: true
             title: Xbox Elite Controller
             url: https://xboxdesignlab.xbox.com/en-us/xbox-elite-wireless-controller-series-2?recipeId=NYV98E3R
-          - icon: 💿
-            title: "Indiana Jones and the Great Circle"
-            url: https://www.xbox.com/en-US/games/store/indiana-jones-and-the-great-circle/9N8FQ28Z6QX3/0010
 ---

@@ -8,6 +8,7 @@
     icon: string;
     title: string;
     url: string;
+    hidden?: boolean;
     isDone?: 'purchased' | 'presented';
   };
 </script>
@@ -31,15 +32,17 @@
     <h2>{group.title}</h2>
     <ul>
       {#each group.items as item}
-        <li>
-          <span>{item.icon}</span>
-          <Link
-            newTab
-            title={[item.title, item.isDone && `(${getDoneTitle(item.isDone)})`].filter(Boolean).join(' ')}
-            url={item.url}
-            class={item.isDone ? 'crossed' : undefined}
-          />
-        </li>
+        {#if !item.hidden}
+          <li>
+            <span>{item.icon}</span>
+            <Link
+              newTab
+              title={[item.title, item.isDone && `(${getDoneTitle(item.isDone)})`].filter(Boolean).join(' ')}
+              url={item.url}
+              class={item.isDone ? 'crossed' : undefined}
+            />
+          </li>
+        {/if}
       {/each}
     </ul>
   {/each}
