@@ -18,13 +18,9 @@ components:
             title: Buy me a coffee
       - title: Tech
         items:
-          - icon: 🎮
-            title: Steam Deck OLED 1TB
-            url: https://store.steampowered.com/steamdeck
-          - icon: 💾
-            hidden: true
-            title: Xbox Storage Expansion
-            url: https://www.bestbuy.com/site/seagate-2tb-storage-expansion-card-for-xbox-series-xs-internal-nvme-ssd-black/6477864.p
+          - icon: 📡
+            title: Flipper Zero
+            url: https://flipper.net/products/flipper-zero
           - icon: 🎮
             hidden: true
             title: Xbox Elite Controller
