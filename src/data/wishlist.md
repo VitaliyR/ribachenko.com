@@ -18,9 +18,6 @@ components:
             title: Buy me a coffee
       - title: Tech
         items:
-          - icon: 📡
-            title: Flipper Zero
-            url: https://flipper.net/products/flipper-zero
           - icon: 🎮
             hidden: true
             title: Xbox Elite Controller
