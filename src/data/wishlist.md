@@ -20,6 +20,10 @@ components:
         items:
           - icon: 🎮
             hidden: true
+            title: Steam Controller
+            url: https://store.steampowered.com/sale/steamcontroller
+          - icon: 🎮
+            hidden: true
             title: Xbox Elite Controller
             url: https://xboxdesignlab.xbox.com/en-us/xbox-elite-wireless-controller-series-2?recipeId=NYV98E3R
 ---
