@@ -19,7 +19,6 @@ components:
       - title: Tech
         items:
           - icon: 🎮
-            hidden: true
             title: Steam Controller
             url: https://store.steampowered.com/sale/steamcontroller
           - icon: 🎮
