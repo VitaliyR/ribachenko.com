@@ -7,6 +7,24 @@
   targetPort = 4000
 
 [[redirects]]
+  from = "https://salen.dev/*"
+  to = "https://ribachenko.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.salen.dev/*"
+  to = "https://ribachenko.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://julia.ribachenko.com/*"
+  to = "https://yuliiafishka.com/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/wa"
   to = "https://api.whatsapp.com/send/?phone=380632886003&text&type=phone_number&app_absent=0"
   status = 302
