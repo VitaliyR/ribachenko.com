@@ -1,15 +1,28 @@
 {
   "name": "ribachenko.com-svelte",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.19.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "puppeteer",
+      "sharp",
+      "svelte-preprocess"
+    ]
+  },
   "scripts": {
     "get:map": "node --experimental-specifier-resolution=node --loader ts-node/esm src/build/map.ts",
     "get:pdf": "node --experimental-specifier-resolution=node --loader ts-node/esm src/build/pdf.ts",
     "build-config": "rm -f config.ts && buildconfig --input config.json --output src/config.ts --env $CONFIG_ENV --module-type typescript",
-    "build-config:local": "CONFIG_ENV=local npm run build-config",
-    "build-config:prod": "CONFIG_ENV=prod npm run build-config",
-    "start": "source ~/.nvm/nvm.sh && nvm use 16 && npm run build-config:local && npm run dev",
+    "build-config:local": "CONFIG_ENV=local pnpm run build-config",
+    "build-config:prod": "CONFIG_ENV=prod pnpm run build-config",
+    "start": "source ~/.nvm/nvm.sh && nvm use && pnpm run build-config:local && pnpm run dev",
     "dev": "vite dev --port 4000",
-    "build": "npm run build-config:prod && npm run get:map && vite build",
+    "build": "pnpm run build-config:prod && pnpm run get:map && vite build",
     "preview": "vite preview",
     "prepare": "svelte-kit sync",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
