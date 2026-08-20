@@ -2,6 +2,8 @@ import { json, type RequestEvent } from '@sveltejs/kit';
 import { parse } from 'node-html-parser';
 import type { MastodonApiEntry, MastodonRequestEntry } from './types';
 
+export const prerender = false;
+
 const FEED_URL = 'https://mastodon.social/api/v1/accounts/000498519/statuses?exclude_replies=1';
 const CACHE_TIME = 1000 * 60;
 

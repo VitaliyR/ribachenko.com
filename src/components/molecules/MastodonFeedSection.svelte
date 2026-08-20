@@ -1,17 +1,32 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import dayjs from 'dayjs';
   import Section from './Section.svelte';
   import type { BaseComponent } from '../atoms/Component.svelte';
-  import { mastodonStore } from '../../lib/stores';
+  import type { MastodonRequestEntry } from '../../routes/api/mastodon/types';
 
   export let hasBorder = false;
   export let title: string;
   export let titleSlot: BaseComponent | undefined = undefined;
   export let limit: number | undefined = undefined;
-  const posts = limit ? $mastodonStore.feed?.slice(0, limit) ?? [] : $mastodonStore.feed ?? [];
+
+  let feed: MastodonRequestEntry[] = [];
+
+  onMount(async () => {
+    try {
+      const response = await fetch('/api/mastodon');
+      if (response.ok) {
+        feed = await response.json();
+      }
+    } catch (e) {
+      /* empty */
+    }
+  });
+
+  $: posts = limit ? feed.slice(0, limit) : feed;
 </script>
 
-{#if posts}
+{#if posts.length}
   <Section {hasBorder} {title} {titleSlot}>
     <div class="container">
       {#each posts as post}

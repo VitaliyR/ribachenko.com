@@ -5,3 +5,15 @@
 [dev]
   command = "pnpm run dev"
   targetPort = 4000
+
+[[redirects]]
+  from = "/wa"
+  to = "https://api.whatsapp.com/send/?phone=380632886003&text&type=phone_number&app_absent=0"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/tg"
+  to = "https://telegram.me/salen"
+  status = 302
+  force = true

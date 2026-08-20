@@ -10,8 +10,6 @@ import images from './src/build/images.mjs';
 const filePath = dirname(fileURLToPath(import.meta.url));
 const stylePath = `${filePath}/src/styles`;
 
-// Netlify sets NETLIFY=true during its builds. Locally and on the self-hosted
-// pm2 deploy we keep emitting a standalone Node server via adapter-node.
 const adapter = process.env.NETLIFY
   ? netlifyAdapter()
   : nodeAdapter({ precompress: true });

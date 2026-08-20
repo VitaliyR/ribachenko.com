@@ -22,7 +22,7 @@
     "build-config:prod": "CONFIG_ENV=prod pnpm run build-config",
     "start": "source ~/.nvm/nvm.sh && nvm use && pnpm run build-config:local && pnpm run dev",
     "dev": "vite dev --port 4000",
-    "build": "pnpm run build-config:prod && pnpm run get:map && vite build",
+    "build": "pnpm run build-config:prod && pnpm run get:map && vite build && node src/build/pdf-static.mjs",
     "preview": "vite preview",
     "prepare": "svelte-kit sync",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

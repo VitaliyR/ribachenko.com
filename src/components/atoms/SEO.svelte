@@ -29,7 +29,7 @@
     image: logoUrl,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': config.baseUrl
+      '@id': url
     },
     description: pageDescription,
     ...pageAdditionalData
@@ -40,7 +40,7 @@
 </script>
 
 <svelte:head>
-  <link rel="canonical" href={config.baseUrl} />
+  <link rel="canonical" href={url} />
 
   <meta name="og:site_name" content={siteConfig.siteName} />
   <meta name="og:type" content="website" />

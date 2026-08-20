@@ -4,6 +4,8 @@ import config from '../../config';
 import { getPostDescription } from '$lib/utils';
 import { loadAllPages } from '$lib/get-pages';
 
+export const prerender = true;
+
 export async function GET() {
   const pages = await loadAllPages();
   const posts = toPairs(pickBy(pages, (page, slug) => slug.startsWith('posts/')));
