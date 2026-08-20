@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@poppanator/sveltekit-svg": "^4.2.1",
+    "@sveltejs/adapter-netlify": "^6.0.4",
     "@sveltejs/adapter-node": "^5.0.1",
     "@sveltejs/kit": "^2.5.10",
     "@sveltejs/vite-plugin-svelte": "^3.1.2",

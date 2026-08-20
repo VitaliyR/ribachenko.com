@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-node';
+import nodeAdapter from '@sveltejs/adapter-node';
+import netlifyAdapter from '@sveltejs/adapter-netlify';
 import preprocess from 'svelte-preprocess';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -8,6 +9,12 @@ import images from './src/build/images.mjs';
 
 const filePath = dirname(fileURLToPath(import.meta.url));
 const stylePath = `${filePath}/src/styles`;
+
+// Netlify sets NETLIFY=true during its builds. Locally and on the self-hosted
+// pm2 deploy we keep emitting a standalone Node server via adapter-node.
+const adapter = process.env.NETLIFY
+  ? netlifyAdapter()
+  : nodeAdapter({ precompress: true });
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -30,9 +37,7 @@ const config = {
   ],
 
   kit: {
-    adapter: adapter({
-      precompress: true
-    })
+    adapter
   }
 };
 
