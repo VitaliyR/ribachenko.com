@@ -29,6 +29,11 @@ components:
         image: /assets/projects/netlify.png
         imageDark: /assets/projects/netlify-dark.png
         href: https://netlify.com
+      - title: Sundial
+        description: Google Calendar Reimagined for Enterprise Schedulers
+        image: /assets/projects/sundial.png
+        imageDark: /assets/projects/sundial-dark.png
+        href: https://trysundial.ai
       - title: Stackbit
         description: Easiest way to create your own site with the best tools is Stackbit - first open, complete platform for the Jamstack
         image: /assets/projects/stackbit.png
