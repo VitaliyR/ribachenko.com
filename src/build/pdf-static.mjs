@@ -59,6 +59,7 @@ try {
     throw new Error(`Preview server did not start on port ${PORT}`);
   }
 
+  await run('pnpm', ['exec', 'puppeteer', 'browsers', 'install', 'chrome']);
   await run('pnpm', ['run', 'get:pdf']);
 
   for (const file of FILES) {
