@@ -54,7 +54,10 @@
     </ul>
     <div class="u-hide-tablet">
       <div class="header__footer">
-        <p class="header__footer-legal">© {new Date().getFullYear()}</p>
+        <p class="header__footer-legal">
+          © {new Date().getFullYear()}. Powered by
+          <a class="link" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">Netlify</a>
+        </p>
       </div>
     </div>
     <div class="header__day-night link link--plain link--ic">

@@ -33,7 +33,8 @@
     </div>
     <slot name="footer" />
     <div class="u-show-tablet footer">
-      © {new Date().getFullYear()}
+      © {new Date().getFullYear()}. Powered by
+      <a class="link" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">Netlify</a>
     </div>
   </main>
 </div>

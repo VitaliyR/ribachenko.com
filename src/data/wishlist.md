@@ -11,11 +11,6 @@ components:
       I want to buy, but not now. In worst case scenario you can just send me some beer in non-liquid state 💳
   - type: ItemsListSection
     items:
-      - title: Etc
-        items:
-          - icon: 💳
-            url: https://send.monobank.com.ua/2BgRGaJ9q?f
-            title: Buy me a coffee
       - title: Tech
         items:
           - icon: 🎮
