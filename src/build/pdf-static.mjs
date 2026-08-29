@@ -13,7 +13,7 @@ const waitForServer = async (url, attempts = 60) => {
       if (response.ok) {
         return true;
       }
-    } catch (e) {
+    } catch {
       /* empty */
     }
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -39,7 +39,7 @@ const stopPreview = () => {
   }
   try {
     process.kill(-preview.pid, 'SIGTERM');
-  } catch (e) {
+  } catch {
     /* empty */
   }
 };

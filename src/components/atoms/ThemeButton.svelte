@@ -4,11 +4,14 @@
   import classNames from 'classnames';
   import Icon from './Icon.svelte';
 
-  let className: string | undefined = '';
+  interface Props {
+    class?: string | undefined;
+  }
 
-  export { className as class };
+  let { class: className = '' }: Props = $props();
 
-  let isDarkScheme = false;
+
+  let isDarkScheme = $state(false);
   if (browser) {
     isDarkScheme = isEnabledDarkScheme();
   }
@@ -19,7 +22,7 @@
   };
 </script>
 
-<button class={classNames('button', className)} role="switch" aria-label="Switch day/night mode" aria-checked={isDarkScheme} on:click={toggleTheme}>
+<button class={classNames('button', className)} role="switch" aria-label="Switch day/night mode" aria-checked={isDarkScheme} onclick={toggleTheme}>
   <Icon icon="daynight-stroke" />
 </button>
 

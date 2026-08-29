@@ -5,17 +5,22 @@
   import SEO from '../atoms/SEO.svelte';
   import type { PageLayoutData } from '../../models/types';
   import { rehighlightCode } from '$lib/md-utils';
-  import { afterUpdate } from 'svelte';
+  import type { Snippet } from 'svelte';
 
-  let className = '';
+  interface Props {
+    class?: string;
+    slug: string;
+    data: PageLayoutData;
+    body: string;
+    addBodyPadding?: boolean;
+    header?: Snippet;
+    footer?: Snippet;
+  }
 
-  export { className as class };
-  export let slug: string;
-  export let data: PageLayoutData;
-  export let body: string;
-  export let addBodyPadding = false;
+  let { class: className = '', slug, data, body, addBodyPadding = false, header, footer }: Props = $props();
 
-  afterUpdate(() => {
+  $effect(() => {
+    void body;
     rehighlightCode();
   });
 </script>
@@ -27,11 +32,11 @@
     {#each data.components ?? [] as component}
       <Component {...component} />
     {/each}
-    <slot name="header" />
+    {@render header?.()}
     <div class="content" class:content--padding={addBodyPadding}>
       {@html body}
     </div>
-    <slot name="footer" />
+    {@render footer?.()}
     <div class="u-show-tablet footer">
       © {new Date().getFullYear()}. Powered by
       <a class="link" href="https://www.netlify.com" target="_blank" rel="noreferrer noopener">Netlify</a>

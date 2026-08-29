@@ -8,32 +8,29 @@
   import Icon from '../atoms/Icon.svelte';
   import config from '../../config';
   import Picture from '../atoms/Picture.svelte';
-  import { metaStore } from '../../lib/stores';
+  import { getMetaContext } from '../../lib/meta-context';
 
-  export let slug: string;
-  export let data: Post;
-  export let body: string;
+  interface Props {
+    slug: string;
+    data: Post;
+    body: string;
+  }
 
-  const modifiedData = {
-    ...data,
-    components: []
-  };
+  let { slug, data, body }: Props = $props();
+  const meta = getMetaContext();
 
-  let nextPrevPosts: Array<[string, Page]> = [];
-  let shareText: string;
-  let postUrl: string;
-
-  $: {
-    const posts = toPairs($metaStore.pages)
+  let modifiedData = $derived({ ...data, components: [] });
+  let nextPrevPosts: Array<[string, Page]> = $derived.by(() => {
+    const posts = toPairs(meta.pages)
       .filter((obj) => obj[0].startsWith('posts/'))
       .sort((a, b) => b[1].attributes.published_at.getTime() - a[1].attributes.published_at.getTime());
     const postIndex = posts.findIndex((obj) => obj[0] === `${slug}.md`);
     const nextPost = posts[postIndex + 1];
     const prevPost = posts[postIndex - 1];
-    nextPrevPosts = [nextPost, prevPost].filter(Boolean);
-    shareText = encodeURIComponent(data.title);
-    postUrl = new URL(`/${slug}`, config.baseUrl).toString();
-  }
+    return [nextPost, prevPost].filter((post): post is [string, Page] => Boolean(post));
+  });
+  let shareText = $derived(encodeURIComponent(data.title));
+  let postUrl = $derived(new URL(`/${slug}`, config.baseUrl).toString());
 
   const shareArticle = () => {
     navigator.share({
@@ -44,79 +41,83 @@
 </script>
 
 <PageLayout {slug} {body} data={modifiedData} class="post-page" addBodyPadding>
-  <div slot="header">
-    <div class="header-container">
-      <h2 class="title">{data.title}</h2>
-      <section class="meta-container">
-        <time datetime={data.published_at.toString()}>
-          {dayjs(data.published_at).format('DD MMMM YYYY')}
-        </time>
-        on
-        <div class="tags-container">
-          {#each data.tags as tag}
-            <span>{tag.name}</span>
-          {/each}
-        </div>
-      </section>
-    </div>
-    {#if data.image}
-      <a href={data.image} target="_blank" rel="noreferrer">
-        <Picture url={data.image} alt={`Feature image of ${data.title}`} class="post-image" />
-      </a>
-    {/if}
-  </div>
-  <div slot="footer">
-    <footer class="footer">
-      <section>
-        {#if browser && typeof navigator.share === 'function'}
-          <button class="link link--plain button share-button" on:click={shareArticle}>
-            <Icon icon="share" />
-          </button>
-        {:else}
-          <a
-            class="link link--plain"
-            target="_blank"
-            href={`https://mastodon.social/share?text=${shareText}&url=${postUrl}`}
-            rel="noreferrer noopener"
-            aria-label="Share this article via Mastodon"
-          >
-            <Icon icon="mastodon" />
-          </a>
-          <a
-            class="link link--plain"
-            target="_blank"
-            href={`https://twitter.com/share?text=${shareText}&url=${postUrl}`}
-            rel="noreferrer noopener"
-            aria-label="Share this article via Twitter"
-          >
-            <Icon icon="twitter" />
-          </a>
-          <a
-            class="link link--plain"
-            target="_blank"
-            href={`https://www.facebook.com/sharer/sharer.php?u=${postUrl}`}
-            rel="noreferrer noopener"
-            aria-label="Share this article via Facebook"
-          >
-            <Icon icon="facebook" />
-          </a>
-        {/if}
-      </section>
-    </footer>
-    <aside class="next-prev-container">
-      {#each nextPrevPosts as post, index}
-        <a class="next-prev-card link link--plain link--print-url" class:next-prev-card--right={index === 1} href={`/${post[0].replace(/\.md$/, '')}`}>
-          {#if post[1].attributes.image}
-            <Picture class="next-prev-card-image" url={post[1].attributes.image} alt={`Feature image of ${post[1].attributes.title}`} />
-            <span class="next-prev-card-direction">{index === 0 ? 'Older' : 'Newer'}</span>
-            <h3 class="next-prev-card-title">{post[1].attributes.title}</h3>
-            <p class="next-prev-card-description">{getPostDescription(post[1].body)}</p>
-            <time class="next-prev-card-time" datetime={post[1].attributes.published_at}>{dayjs(post[1].attributes.published_at).format('DD MMM YY')}</time>
-          {/if}
+  {#snippet header()}
+    <div>
+      <div class="header-container">
+        <h2 class="title">{data.title}</h2>
+        <section class="meta-container">
+          <time datetime={data.published_at.toString()}>
+            {dayjs(data.published_at).format('DD MMMM YYYY')}
+          </time>
+          on
+          <div class="tags-container">
+            {#each data.tags as tag}
+              <span>{tag.name}</span>
+            {/each}
+          </div>
+        </section>
+      </div>
+      {#if data.image}
+        <a href={data.image} target="_blank" rel="noreferrer">
+          <Picture url={data.image} alt={`Feature image of ${data.title}`} class="post-image" />
         </a>
-      {/each}
-    </aside>
-  </div>
+      {/if}
+    </div>
+  {/snippet}
+  {#snippet footer()}
+    <div>
+      <footer class="footer">
+        <section>
+          {#if browser && typeof navigator.share === 'function'}
+            <button class="link link--plain button share-button" onclick={shareArticle}>
+              <Icon icon="share" />
+            </button>
+          {:else}
+            <a
+              class="link link--plain"
+              target="_blank"
+              href={`https://mastodon.social/share?text=${shareText}&url=${postUrl}`}
+              rel="noreferrer noopener"
+              aria-label="Share this article via Mastodon"
+            >
+              <Icon icon="mastodon" />
+            </a>
+            <a
+              class="link link--plain"
+              target="_blank"
+              href={`https://twitter.com/share?text=${shareText}&url=${postUrl}`}
+              rel="noreferrer noopener"
+              aria-label="Share this article via Twitter"
+            >
+              <Icon icon="twitter" />
+            </a>
+            <a
+              class="link link--plain"
+              target="_blank"
+              href={`https://www.facebook.com/sharer/sharer.php?u=${postUrl}`}
+              rel="noreferrer noopener"
+              aria-label="Share this article via Facebook"
+            >
+              <Icon icon="facebook" />
+            </a>
+          {/if}
+        </section>
+      </footer>
+      <aside class="next-prev-container">
+        {#each nextPrevPosts as post, index}
+          <a class="next-prev-card link link--plain link--print-url" class:next-prev-card--right={index === 1} href={`/${post[0].replace(/\.md$/, '')}`}>
+            {#if post[1].attributes.image}
+              <Picture class="next-prev-card-image" url={post[1].attributes.image} alt={`Feature image of ${post[1].attributes.title}`} />
+              <span class="next-prev-card-direction">{index === 0 ? 'Older' : 'Newer'}</span>
+              <h3 class="next-prev-card-title">{post[1].attributes.title}</h3>
+              <p class="next-prev-card-description">{getPostDescription(post[1].body)}</p>
+              <time class="next-prev-card-time" datetime={post[1].attributes.published_at}>{dayjs(post[1].attributes.published_at).format('DD MMM YY')}</time>
+            {/if}
+          </a>
+        {/each}
+      </aside>
+    </div>
+  {/snippet}
 </PageLayout>
 
 <style lang="scss">

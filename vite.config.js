@@ -3,7 +3,6 @@ import svg from '@poppanator/sveltekit-svg';
 
 /** @type {import('vite').UserConfig} */
 export default {
-  include: ['./src/data/**/*'],
   plugins: [
     sveltekit(),
     svg({
@@ -15,7 +14,6 @@ export default {
             // not a good idea! https://github.com/svg/svgo/pull/1461
             params: {
               overrides: {
-                removeViewBox: false,
                 removeUselessStrokeAndFill: false,
                 removeUnknownsAndDefaults: false
               }

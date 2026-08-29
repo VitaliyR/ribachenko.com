@@ -1,5 +1,5 @@
-@import './prism';
-@import './components';
+@use './prism';
+@use './components';
 
 * {
   box-sizing: border-box;

@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
   type Group = {
     title: string;
     items: Item[];
@@ -18,11 +18,20 @@
   import Link from '../atoms/Link.svelte';
   import Section from './Section.svelte';
 
-  export let hasBorder = false;
-  export let title = '';
-  export let titleSlot: BaseComponent | undefined = undefined;
 
-  export let items: Group[];
+  interface Props {
+    hasBorder?: boolean;
+    title?: string;
+    titleSlot?: BaseComponent | undefined;
+    items: Group[];
+  }
+
+  let {
+    hasBorder = false,
+    title = '',
+    titleSlot = undefined,
+    items
+  }: Props = $props();
 
   const getDoneTitle = (isDone: Item['isDone']): string => (isDone === 'purchased' ? 'Purchased' : 'Presented');
 </script>

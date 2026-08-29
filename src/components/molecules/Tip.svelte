@@ -1,8 +1,12 @@
 <script lang="ts">
   import Tooltip from '../atoms/Tooltip.svelte';
 
-  export let targetElement: HTMLElement;
-  export let title: string;
+  interface Props {
+    targetElement: HTMLElement;
+    title: string;
+  }
+
+  let { targetElement, title }: Props = $props();
 </script>
 
 <Tooltip placement="top" {targetElement}>

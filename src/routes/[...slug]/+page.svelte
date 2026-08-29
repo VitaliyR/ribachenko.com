@@ -1,18 +1,27 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import Layout from '../../components/layouts/index.svelte';
   import type { PageData } from './$types';
-  import { metaStore } from '../../lib/stores';
+  import { setMetaContext } from '../../lib/meta-context';
+  import type { Page } from '../../models/types';
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
 
-  $: layout = data.data?.layout || 'PageLayout';
+  let { data }: Props = $props();
 
-  $: metaStore.set({
-    pages: data.meta.pages,
-    searchParams: browser ? $page.url.searchParams : new URLSearchParams()
+  let layout = $derived((data.data?.layout as string | undefined) || 'PageLayout');
+
+  setMetaContext({
+    get pages() {
+      return data.meta.pages as Record<string, Page>;
+    },
+    get searchParams() {
+      return browser ? page.url.searchParams : new URLSearchParams();
+    }
   });
 </script>
 
-<Layout {layout} data={data.data} body={data.body} slug={data.slug ?? ''} />
+<Layout {layout} data={data.data} body={data.body as string} slug={(data.slug as string) ?? ''} />

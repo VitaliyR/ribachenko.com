@@ -5,12 +5,21 @@
   import type { BaseComponent } from '../atoms/Component.svelte';
   import type { MastodonRequestEntry } from '../../routes/api/mastodon/types';
 
-  export let hasBorder = false;
-  export let title: string;
-  export let titleSlot: BaseComponent | undefined = undefined;
-  export let limit: number | undefined = undefined;
+  interface Props {
+    hasBorder?: boolean;
+    title: string;
+    titleSlot?: BaseComponent | undefined;
+    limit?: number | undefined;
+  }
 
-  let feed: MastodonRequestEntry[] = [];
+  let {
+    hasBorder = false,
+    title,
+    titleSlot = undefined,
+    limit = undefined
+  }: Props = $props();
+
+  let feed: MastodonRequestEntry[] = $state([]);
 
   onMount(async () => {
     try {
@@ -18,12 +27,12 @@
       if (response.ok) {
         feed = await response.json();
       }
-    } catch (e) {
+    } catch {
       /* empty */
     }
   });
 
-  $: posts = limit ? feed.slice(0, limit) : feed;
+  let posts = $derived(limit ? feed.slice(0, limit) : feed);
 </script>
 
 {#if posts.length}

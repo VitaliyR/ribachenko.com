@@ -7,6 +7,12 @@
   targetPort = 4000
 
 [[redirects]]
+  from = "https://ribachenkocom.netlify.app/*"
+  to = "https://ribachenko.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "https://salen.dev/*"
   to = "https://ribachenko.com/:splat"
   status = 301

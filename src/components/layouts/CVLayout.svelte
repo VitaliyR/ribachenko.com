@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
   import type { IconName } from '../atoms/Icon.svelte';
 
   export type Contact = {
@@ -38,18 +38,22 @@
 <script lang="ts">
   import { upperFirst } from 'lodash-es';
   import dayjs from 'dayjs';
+  import utc from 'dayjs/plugin/utc';
   import SEO from '../atoms/SEO.svelte';
   import Picture from '../atoms/Picture.svelte';
   import Link from '../atoms/Link.svelte';
   import CVDownload from '../atoms/CVDownload.svelte';
   import ThemeButton from '../atoms/ThemeButton.svelte';
   import { parseMarkdown } from '$lib/md-utils';
-  import { metaStore } from '../../lib/stores';
+  import { getMetaContext } from '../../lib/meta-context';
   import siteConfig from '../../data/config.json';
 
-  export let slug: string;
-  export let body: string;
-  export let data: {
+  dayjs.extend(utc);
+
+  interface Props {
+    slug: string;
+    body: string;
+    data: {
     name: string;
     about: string;
     logo: string;
@@ -68,9 +72,13 @@
     }[];
     etc?: string;
   };
+  }
 
-  let mode: 'full' | 'short';
-  $: mode = $metaStore.searchParams.has('short') ? 'short' : 'full';
+  let { slug, body, data }: Props = $props();
+
+  const meta = getMetaContext();
+  let mode: 'full' | 'short' = $derived(meta.searchParams.has('short') ? 'short' : 'full');
+
 
   const replaceContactInfo = (text: string) =>
     text
@@ -183,7 +191,7 @@
                     <span> — {experience.location}</span>
                   </div>
                   <div class="experience-header-date">
-                    {dayjs(experience.dateStart).format('MMMM YYYY')} - {experience.dateEnd ? dayjs(experience.dateEnd).format('MMMM YYYY') : 'Present'}
+                    {dayjs.utc(experience.dateStart).format('MMMM YYYY')} - {experience.dateEnd ? dayjs.utc(experience.dateEnd).format('MMMM YYYY') : 'Present'}
                   </div>
                 </header>
                 <div class="experience-description">
@@ -207,7 +215,7 @@
                     <span> — {education.degree}</span>
                   </div>
                   <div class="experience-header-date">
-                    {dayjs(education.dateStart).format('YYYY')} - {education.dateEnd ? dayjs(education.dateEnd).format('YYYY') : 'Present'}
+                    {dayjs.utc(education.dateStart).format('YYYY')} - {education.dateEnd ? dayjs.utc(education.dateEnd).format('YYYY') : 'Present'}
                   </div>
                 </header>
                 <div class="experience-description">

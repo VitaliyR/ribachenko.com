@@ -11,29 +11,28 @@ import 'prismjs/plugins/show-language/prism-show-language';
 
 const markedRenderer = new marked.Renderer();
 
-markedRenderer.link = function (href, title, text) {
-  const link = marked.Renderer.prototype.link.call(this, href, title, text);
-  if (href?.startsWith('http') || href?.match(/\.\w+$/)) {
+markedRenderer.link = function (token) {
+  const link = marked.Renderer.prototype.link.call(this, token);
+  if (token.href.startsWith('http') || token.href.match(/\.\w+$/)) {
     return link.replace('<a', `<a target="_blank" rel="noreferrer noopener"`);
   }
   return link;
 };
 
 marked.setOptions({
-  renderer: markedRenderer,
-
-  highlight(code: string, lang: string) {
-    const finalLang = Prism.languages[lang] ? lang : 'js';
-    const langDef = Prism.languages[finalLang];
-    return Prism.highlight(code, langDef, finalLang);
-  }
+  renderer: markedRenderer
 });
+
+markedRenderer.code = function ({ text, lang }) {
+  const finalLang = lang && Prism.languages[lang] ? lang : 'js';
+  return `<pre><code class="language-${finalLang}">${Prism.highlight(text, Prism.languages[finalLang], finalLang)}</code></pre>`;
+};
 
 Prism.manual = true;
 
 export const parseMarkdown = (markdown: string): string =>
   decodeHtmlCharacters(
-    xss(marked(markdown, { breaks: true }), {
+    xss(marked.parse(markdown, { breaks: true, async: false }), {
       whiteList: {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore not defined in types but there

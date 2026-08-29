@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
   import DaynightStrokeIcon from '../../assets/daynight-stroke.svg';
   import DownloadIcon from '../../assets/download.svg';
   import EmailStrokeIcon from '../../assets/email-stroke.svg';
@@ -59,13 +59,16 @@
 </script>
 
 <script lang="ts">
-  export let icon: IconName;
+  interface Props {
+    icon: IconName;
+    class?: string;
+  }
 
-  let className = '';
-  export { className as class };
+  let { icon, class: className = '' }: Props = $props();
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  $: component = ICONS[icon] as any;
+  let component = $derived(ICONS[icon] as any);
+
+  const SvelteComponent = $derived(component);
 </script>
 
-<svelte:component this={component} class={className} />
+<SvelteComponent class={className} />

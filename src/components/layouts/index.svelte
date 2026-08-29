@@ -3,18 +3,28 @@
   import PostLayout from './PostLayout.svelte';
   import CVLayout from './CVLayout.svelte';
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const LAYOUTS: { [K: string]: any } = {
     PageLayout,
     PostLayout,
     CVLayout
   };
 
-  export let slug: string;
-  export let layout: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  export let data: any;
-  export let body: string;
+  interface Props {
+    slug: string;
+    layout: string;
+
+    data: any;
+    body: string;
+  }
+
+  let {
+    slug,
+    layout,
+    data,
+    body
+  }: Props = $props();
+
+  const SvelteComponent = $derived(LAYOUTS[layout]);
 </script>
 
-<svelte:component this={LAYOUTS[layout]} {data} {body} {slug} />
+<SvelteComponent {data} {body} {slug} />

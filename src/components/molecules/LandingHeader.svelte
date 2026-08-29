@@ -1,19 +1,19 @@
 <script lang="ts">
-  import Icon from '../atoms/Icon.svelte';
+  import Icon, { type IconName } from '../atoms/Icon.svelte';
   import Picture from '../atoms/Picture.svelte';
   import ThemeButton from '../atoms/ThemeButton.svelte';
   import siteConfig from '../../data/config.json';
 
-  let isMapShown = false;
+  let isMapShown = $state(false);
 
   const hideMap = () => {
     isMapShown = false;
   };
 </script>
 
-<svelte:window on:scroll={hideMap} />
+<svelte:window onscroll={hideMap} />
 
-<header role="heading" aria-level={1} class="header" class:header--show-map={isMapShown} on:mouseleave={hideMap}>
+<header role="heading" aria-level={1} class="header" class:header--show-map={isMapShown} onmouseleave={hideMap}>
   <div class="header__top">
     <div>
       <a class="header__avatar-container link link--plain" href={siteConfig.logo} target="_blank" rel="noreferrer">
@@ -30,10 +30,10 @@
       <button
         class="header__place-button button link link--plain"
         type="button"
-        on:click={() => {
+        onclick={() => {
           isMapShown = !isMapShown;
         }}
-        on:blur={hideMap}
+        onblur={hideMap}
       >
         <span class="header__place-icon">
           <Icon icon="pin" />
@@ -47,7 +47,7 @@
       {#each siteConfig.socials as social}
         <li class="header__links-item">
           <a class="link link--plain link--ic" href={social.url} target="_blank" aria-label={`${social.name} logo`} rel={social.rel ?? 'noreferrer noopener'}>
-            <Icon class="header__link-icon" icon={social.icon} />
+            <Icon class="header__link-icon" icon={social.icon as IconName} />
           </a>
         </li>
       {/each}
