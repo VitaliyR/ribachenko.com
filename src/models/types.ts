@@ -1,5 +1,7 @@
-export type Page = Record<string, unknown> & {
+export type Page = {
   body: string;
+  attributes: Record<string, any>;
+  frontmatter?: string;
 };
 
 export type Slug = {
@@ -18,11 +20,12 @@ export type Post = {
 };
 
 export type LayoutData = {
-  layout: string;
+  layout?: string;
 };
 
 export type ComponentData = {
-  type: string;
+  type: 'TextSection' | 'CardsListSection' | 'PostsFeedSection' | 'MastodonFeedSection' | 'ItemsListSection' | 'Link';
+  [key: string]: any;
 };
 
 export type PageLayoutData = LayoutData & {

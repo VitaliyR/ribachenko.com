@@ -6,7 +6,6 @@ import { getFiles } from './utils-server.mjs';
 
 const DATA_DIR = path.resolve('src/data/');
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type PageData = FrontMatterResult<any>;
 
 export const loadAllPages = async () => {

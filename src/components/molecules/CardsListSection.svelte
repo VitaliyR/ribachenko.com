@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script module lang="ts">
   export type Card = {
     title: string;
     description: string;
@@ -16,10 +16,19 @@
   import Picture from '../atoms/Picture.svelte';
   import Section from './Section.svelte';
 
-  export let hasBorder = false;
-  export let title: string;
-  export let cards: Card[];
-  export let titleSlot: BaseComponent | undefined = undefined;
+  interface Props {
+    hasBorder?: boolean;
+    title: string;
+    cards: Card[];
+    titleSlot?: BaseComponent | undefined;
+  }
+
+  let {
+    hasBorder = false,
+    title,
+    cards,
+    titleSlot = undefined
+  }: Props = $props();
 </script>
 
 <Section {hasBorder} {title} {titleSlot}>
@@ -83,7 +92,6 @@
 
   .item {
     display: block;
-    vertical-align: top;
 
     :global(.image) {
       width: 100%;

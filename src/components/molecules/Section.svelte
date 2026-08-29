@@ -1,13 +1,23 @@
 <script lang="ts">
+  import type { Snippet } from 'svelte';
   import Component, { type BaseComponent } from '../atoms/Component.svelte';
 
-  let className: string | undefined = undefined;
 
-  export { className as class };
+  interface Props {
+    class?: string | undefined;
+    hasBorder?: boolean;
+    title?: string | undefined;
+    titleSlot?: BaseComponent | undefined;
+    children?: Snippet;
+  }
 
-  export let hasBorder = false;
-  export let title: string | undefined = undefined;
-  export let titleSlot: BaseComponent | undefined = undefined;
+  let {
+    class: className = undefined,
+    hasBorder = false,
+    title = undefined,
+    titleSlot = undefined,
+    children
+  }: Props = $props();
 </script>
 
 <div class:has-border={hasBorder} class={className}>
@@ -17,7 +27,7 @@
       {#if titleSlot}<Component {...titleSlot} />{/if}
     </header>
   {/if}
-  <slot />
+  {@render children?.()}
 </div>
 
 <style lang="scss">

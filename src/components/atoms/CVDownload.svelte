@@ -6,18 +6,22 @@
   import Link from './Link.svelte';
   import Tooltip from './Tooltip.svelte';
 
-  export let pdf: {
+  interface Props {
+    pdf?: {
     label: string;
     url: string;
     description?: string;
-  }[] = [];
-  export let isVertical = false;
-  export let name: string | undefined = undefined;
+  }[];
+    isVertical?: boolean;
+    name?: string | undefined;
+  }
 
-  let printButton: HTMLButtonElement;
-  let downloadButton: HTMLButtonElement;
-  let isPrintDropdownVisible = false;
-  let isDownloadDropdownVisible = false;
+  let { pdf = [], isVertical = false, name = undefined }: Props = $props();
+
+  let printButton: HTMLButtonElement | undefined = $state();
+  let downloadButton: HTMLButtonElement | undefined = $state();
+  let isPrintDropdownVisible = $state(false);
+  let isDownloadDropdownVisible = $state(false);
   let printIframe: HTMLIFrameElement | undefined;
 
   const printPdf = (pdfUrl: string) => {
@@ -26,7 +30,7 @@
         printIframe?.focus();
         printIframe?.contentWindow?.print();
       }, 1);
-    } catch (e) {
+    } catch {
       window.open(pdfUrl, '_blank');
     }
   };
@@ -62,16 +66,16 @@
 
 <div class="container" class:container--vertical={isVertical}>
   {#if pdf.length > 0}
-    <button type="button" class="button" on:click={onPrintClicked} bind:this={printButton}>
+    <button type="button" class="button" onclick={onPrintClicked} bind:this={printButton}>
       <Icon icon="print" />
       Print
     </button>
   {/if}
   {#if isPrintDropdownVisible && pdf.length > 0}
-    <Tooltip targetElement={printButton} placement="bottom" sameWidth>
-      <div class="buttons-tooltip" use:closable={{ skip: [printButton] }} on:close={() => (isPrintDropdownVisible = false)}>
+    <Tooltip targetElement={printButton!} placement="bottom" sameWidth>
+      <div class="buttons-tooltip" use:closable={{ skip: [printButton!] }} onclose={() => (isPrintDropdownVisible = false)}>
         {#each pdf as file}
-          <button type="button" class="button button-secondary" on:click={() => print(file.url)} use:tip={file.description ?? ''}>
+          <button type="button" class="button button-secondary" onclick={() => print(file.url)} use:tip={file.description ?? ''}>
             {file.label}
           </button>
         {/each}
@@ -82,13 +86,13 @@
   {#if pdf.length === 1}
     <Link url={pdf[0].url} class="button" icon="download" title="Download" download={[name || '', 'CV.pdf'].join(' ')} />
   {:else if pdf.length > 1}
-    <button type="button" class="button" on:click={() => (isDownloadDropdownVisible = !isDownloadDropdownVisible)} bind:this={downloadButton}>
+    <button type="button" class="button" onclick={() => (isDownloadDropdownVisible = !isDownloadDropdownVisible)} bind:this={downloadButton}>
       <Icon icon="download" />
       Download
     </button>
     {#if isDownloadDropdownVisible}
-      <Tooltip targetElement={downloadButton} placement="bottom" sameWidth>
-        <div class="buttons-tooltip" use:closable={{ skip: [downloadButton] }} on:close={() => (isDownloadDropdownVisible = false)}>
+      <Tooltip targetElement={downloadButton!} placement="bottom" sameWidth>
+        <div class="buttons-tooltip" use:closable={{ skip: [downloadButton] }} onclose={() => (isDownloadDropdownVisible = false)}>
           {#each pdf as file}
             <Link
               url={file.url}
@@ -96,7 +100,7 @@
               title={file.label}
               download={[name || '', 'CV.pdf'].join(' ')}
               tip={file.description ?? ''}
-              on:click={() => (isDownloadDropdownVisible = !isDownloadDropdownVisible)}
+              onclick={() => (isDownloadDropdownVisible = !isDownloadDropdownVisible)}
             />
           {/each}
         </div>

@@ -1,4 +1,4 @@
-<script lang="ts" context="module">
+<script lang="ts" module>
   import { omitBy } from 'lodash-es';
   import TextSection from '../molecules/TextSection.svelte';
   import CardsListSection from '../molecules/CardsListSection.svelte';
@@ -24,14 +24,15 @@
 </script>
 
 <script lang="ts">
-  export let type: ComponentType;
-
-  let componentProps: Record<string, unknown>;
-  let component: any;
-  $: {
-    component = MAP[type];
-    componentProps = omitBy($$props, (value, key) => key === 'type' || typeof value === 'undefined');
+  interface Props {
+    type: ComponentType;
+    [key: string]: any;
   }
+
+  let { ...props }: Props = $props();
+
+  const componentProps = $derived(omitBy(props, (value, key) => key === 'type' || typeof value === 'undefined'));
+  const SvelteComponent: any = $derived(MAP[props.type]);
 </script>
 
-<svelte:component this={component} {...componentProps} />
+<SvelteComponent {...componentProps} />

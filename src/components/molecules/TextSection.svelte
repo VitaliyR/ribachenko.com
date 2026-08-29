@@ -3,10 +3,19 @@
   import type { BaseComponent } from '../atoms/Component.svelte';
   import Section from '../molecules/Section.svelte';
 
-  export let text: string;
-  export let hasBorder = false;
-  export let title: string | undefined = undefined;
-  export let titleSlot: BaseComponent | undefined = undefined;
+  interface Props {
+    text: string;
+    hasBorder?: boolean;
+    title?: string | undefined;
+    titleSlot?: BaseComponent | undefined;
+  }
+
+  let {
+    text,
+    hasBorder = false,
+    title = undefined,
+    titleSlot = undefined
+  }: Props = $props();
 </script>
 
 <Section {hasBorder} {title} {titleSlot} class="links-print-url">

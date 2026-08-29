@@ -45,7 +45,7 @@ export async function GET({ fetch }: RequestEvent) {
       const newFeed = await (await fetch(FEED_URL)).json();
       feedCache = newFeed.map(transformEntry);
       feedUpdateDate = new Date();
-    } catch (e) {
+    } catch {
       /* empty */
     }
   }

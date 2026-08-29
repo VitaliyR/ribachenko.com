@@ -1,5 +1,5 @@
-@import '../../node_modules/prismjs/themes/prism-coy.css';
-@import '../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css';
+@use '../../node_modules/prismjs/themes/prism-coy.css';
+@use '../../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 :root {
   --code-background: #fdfdfd;

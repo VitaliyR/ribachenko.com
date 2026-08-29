@@ -16,10 +16,10 @@ const config = {
   preprocess: [
     preprocess({
       css: {
-        prependData: `@import '${stylePath}/theme.scss';`
+        prependData: `@use '${stylePath}/theme.scss';`
       },
       scss: {
-        prependData: `@import '${stylePath}/theme.scss';`
+        prependData: `@use '${stylePath}/theme.scss';`
       },
       preserve: ['ld+json'],
       postcss: {

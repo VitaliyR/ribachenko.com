@@ -1,21 +1,37 @@
 <script lang="ts">
+  import type { MouseEventHandler } from 'svelte/elements';
   import classNames from 'classnames';
   import Icon, { type IconName } from './Icon.svelte';
   import { tip as actionTip } from '../../actions/tip';
 
-  let className = '';
 
-  export { className as class };
+  interface Props {
+    class?: string;
+    tip?: string | undefined;
+    url: string;
+    title?: string | undefined;
+    icon?: IconName | undefined;
+    download?: string | undefined;
+    rel?: string | undefined;
+    isPlain?: boolean;
+    isHiddenPrint?: boolean;
+    newTab?: boolean;
+    onclick?: MouseEventHandler<HTMLAnchorElement>;
+  }
 
-  export let tip: string | undefined = undefined;
-  export let url: string;
-  export let title: string | undefined = undefined;
-  export let icon: IconName | undefined = undefined;
-  export let download: string | undefined = undefined;
-  export let rel: string | undefined = undefined;
-  export let isPlain = false;
-  export let isHiddenPrint = false;
-  export let newTab = false;
+  let {
+    class: className = '',
+    tip = undefined,
+    url,
+    title = undefined,
+    icon = undefined,
+    download = undefined,
+    rel = undefined,
+    isPlain = false,
+    isHiddenPrint = false,
+    newTab = false,
+    onclick
+  }: Props = $props();
 </script>
 
 <a
@@ -25,7 +41,7 @@
   rel={rel ?? (url.startsWith('/') ? undefined : 'noreferrer noopener')}
   {download}
   use:actionTip={tip ?? ''}
-  on:click
+  {onclick}
 >
   {#if icon}
     <Icon {icon} class="icon" />

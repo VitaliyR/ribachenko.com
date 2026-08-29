@@ -4,18 +4,30 @@
   import { EventSchemeChangedName, type EventSchemeChanged, isEnabledDarkScheme } from '$lib/scheme';
   import { onDestroy } from 'svelte';
 
-  export let url: string;
-  export let urlDark: string | undefined = undefined;
-  export let alt: string | undefined = undefined;
-  export let hasRetina = false;
-  export let hasWebp = true;
 
-  let className = '';
-  export { className as class };
+  interface Props {
+    url: string;
+    urlDark?: string | undefined;
+    alt?: string | undefined;
+    hasRetina?: boolean;
+    hasWebp?: boolean;
+    class?: string;
+  }
+
+  let {
+    url,
+    urlDark = undefined,
+    alt = undefined,
+    hasRetina = false,
+    hasWebp = true,
+    class: className = ''
+  }: Props = $props();
+
 
   // if has darkUrl - wait for client to determinate which picture to load
-  let isVisible = !urlDark;
-  let isDarkMode = false;
+  let clientReady = $state(false);
+  let isVisible = $derived(!urlDark || clientReady);
+  let isDarkMode = $state(false);
 
   const onSchemeChanged = (e: EventSchemeChanged) => {
     isDarkMode = e.detail.isDark;
@@ -24,7 +36,7 @@
   if (browser) {
     isDarkMode = isEnabledDarkScheme();
     document.documentElement.addEventListener(EventSchemeChangedName, onSchemeChanged);
-    isVisible = true;
+    clientReady = true;
   }
 
   onDestroy(() => {
@@ -38,22 +50,13 @@
     srcSet: string;
     isDark: boolean;
     type: string;
-  }> = [];
-  let imgBaseUrl: string;
-  let imgBaseUrlExt: string;
-  let isPrint = false;
-
-  $: {
+  }> = $derived.by(() => {
     const [[baseUrl, baseUrlExt], [baseDarkUrl, baseDarkUrlExt]] = [url, urlDark].map((curUrl) => {
       const parts = curUrl?.replace(REPLACE_REGEXP, '/g/').split('.') ?? [];
       return [parts.slice(0, -1).join('.'), parts[parts.length - 1]];
     });
 
-    isPrint = browser ? window.matchMedia('print').matches : false;
-    imgBaseUrl = isDarkMode && !isPrint ? baseDarkUrl || baseUrl : baseUrl;
-    imgBaseUrlExt = isDarkMode && !isPrint ? baseDarkUrlExt || baseUrlExt : baseUrlExt;
-
-    srcSets = [
+    return [
       [baseUrl, baseUrlExt, false],
       hasWebp && baseUrlExt !== 'webp' && [baseUrl, 'webp', false],
       baseDarkUrl && [baseDarkUrl, baseDarkUrlExt, true],
@@ -69,7 +72,17 @@
           type: Mime[ext]
         };
       });
-  }
+  });
+
+  let isPrint = $derived(browser ? window.matchMedia('print').matches : false);
+  let imgBaseUrl = $derived.by(() => {
+    const [baseUrl, baseDarkUrl] = [url, urlDark].map((curUrl) => curUrl?.replace(REPLACE_REGEXP, '/g/').split('.').slice(0, -1).join('.') ?? '');
+    return isDarkMode && !isPrint ? baseDarkUrl || baseUrl : baseUrl;
+  });
+  let imgBaseUrlExt = $derived.by(() => {
+    const [baseUrlExt, baseDarkUrlExt] = [url, urlDark].map((curUrl) => curUrl?.split('.').at(-1) ?? '');
+    return isDarkMode && !isPrint ? baseDarkUrlExt || baseUrlExt : baseUrlExt;
+  });
 </script>
 
 {#if isVisible}

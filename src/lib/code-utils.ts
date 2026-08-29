@@ -1,6 +1,5 @@
 import { isPlainObject, mapValues, forEach } from 'lodash-es';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type DeepMapValue = any;
 
 export function deepMap<C, T, R = T>(

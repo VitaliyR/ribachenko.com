@@ -1,10 +1,16 @@
 <script lang="ts">
   import { browser } from '$app/environment';
-  import { onDestroy } from 'svelte';
+  import { onDestroy, type Snippet } from 'svelte';
   import { EventSchemeChangedName, isEnabledDarkScheme, type EventSchemeChanged } from '../lib/scheme';
   import { isSupportWebP } from '../lib/utils';
 
-  let isDarkScheme = false;
+  interface Props {
+    children?: Snippet;
+  }
+
+  let { children }: Props = $props();
+
+  let isDarkScheme = $state(false);
 
   const onSchemeChanged = (e: EventSchemeChanged) => {
     isDarkScheme = e.detail.isDark;
@@ -32,8 +38,8 @@
   <meta name="theme-color" content={isDarkScheme ? '#2f2f31' : '#ffffff'} />
 </svelte:head>
 
-<slot />
+{@render children?.()}
 
 <style lang="scss" global>
-  @import '../styles/base';
+  @use '../styles/base';
 </style>

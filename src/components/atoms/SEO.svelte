@@ -2,19 +2,32 @@
   import config from '../../config';
   import siteConfig from '../../data/config.json';
 
-  export let pageTitle = '';
-  export let isPageTitleFull = false;
-  export let slug: string;
-  export let pageType = 'WebSite';
-  export let pageDescription = siteConfig.description;
-  export let logoSrc: string = siteConfig.logo;
-  export let pageAdditionalData: Record<string, string | number | boolean> | undefined = undefined;
+  interface Props {
+    pageTitle?: string;
+    isPageTitleFull?: boolean;
+    slug: string;
+    pageType?: string;
+    pageDescription?: any;
+    logoSrc?: string;
+    pageAdditionalData?: Record<string, string | number | boolean> | undefined;
+  }
 
-  const defaultPageTitle = pageTitle ? `${pageTitle} - ${siteConfig.siteName}` : siteConfig.siteName;
+  let {
+    pageTitle = '',
+    isPageTitleFull = false,
+    slug,
+    pageType = 'WebSite',
+    pageDescription = siteConfig.description,
+    logoSrc = siteConfig.logo,
+    pageAdditionalData = undefined
+  }: Props = $props();
 
-  $: pageTitle = isPageTitleFull ? pageTitle : defaultPageTitle;
-  $: url = new URL(slug, config.baseUrl).toString();
-  $: logoUrl = new URL(logoSrc, config.baseUrl).toString();
+  let finalPageTitle = $derived.by(() => {
+    if (isPageTitleFull) return pageTitle;
+    return pageTitle ? `${pageTitle} - ${siteConfig.siteName}` : siteConfig.siteName;
+  });
+  let url = $derived(new URL(slug, config.baseUrl).toString());
+  let logoUrl = $derived(new URL(logoSrc, config.baseUrl).toString());
 
   const getLdJson = () => ({
     '@context': 'https://schema.org',
@@ -44,13 +57,13 @@
 
   <meta name="og:site_name" content={siteConfig.siteName} />
   <meta name="og:type" content="website" />
-  <meta name="og:title" content={pageTitle} />
+  <meta name="og:title" content={finalPageTitle} />
   <meta name="og:description" content={pageDescription} />
   <meta name="og:url" content={url} />
   <meta name="og:image" content={logoSrc} />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:title" content={finalPageTitle} />
   <meta name="twitter:description" content={pageDescription} />
   <meta name="twitter:url" content={url} />
   <meta name="twitter:image" content={logoSrc} />
@@ -58,6 +71,6 @@
 
   {@html getLdJsonString()}
 
-  <title>{pageTitle}</title>
+  <title>{finalPageTitle}</title>
   <link rel="alternate" type="application/rss+xml" title={siteConfig.siteName} href={`${config.baseUrl}/rss/`} />
 </svelte:head>

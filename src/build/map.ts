@@ -18,7 +18,7 @@ const mapStyles = ['light', 'dark'];
 
 const getMapUrl = (style: string): string => {
   const centerPos = `${currentPlace.lng},${currentPlace.lat}`;
-  return `https://api.mapbox.com/styles/v1/mapbox/${style}-v10/static/pin-l+EC0005(${centerPos})/${centerPos},4,0,0/640x1080?access_token=${mapboxKey}`; // eslint-disable-line max-len
+  return `https://api.mapbox.com/styles/v1/mapbox/${style}-v10/static/pin-l+EC0005(${centerPos})/${centerPos},4,0,0/640x1080?access_token=${mapboxKey}`;
 };
 
 const downloadMap = async () => {
