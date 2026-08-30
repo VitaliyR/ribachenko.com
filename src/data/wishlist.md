@@ -16,6 +16,9 @@ components:
           - icon: 🎮
             title: Steam Controller
             url: https://store.steampowered.com/sale/steamcontroller
+          - icon: 💿
+            title: 'Grand Theft Auto VI: Ultimate Edition'
+            url: https://www.xbox.com/en-US/games/store/grand-theft-auto-vi-ultimate-edition/9nnzsnhlr63l
           - icon: 🎮
             hidden: true
             title: Xbox Elite Controller
