@@ -24,9 +24,11 @@ const slugToFile = (slug: string) => {
 
 export const entries: EntryGenerator = async () => {
   const pages = await loadAllPages();
-  return Object.keys(pages).map((file) => ({
-    slug: file === 'index.md' ? '' : file.replace(/\.md$/, '')
-  }));
+  return Object.keys(pages)
+    .filter((file) => file !== 'wishlist.md')
+    .map((file) => ({
+      slug: file === 'index.md' ? '' : file.replace(/\.md$/, '')
+    }));
 };
 
 export const load: PageServerLoad = async ({ params }) => {
