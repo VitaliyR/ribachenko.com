@@ -1,3 +1,4 @@
+import { env } from '$env/dynamic/private';
 import { getDatabase } from '@netlify/database';
 
 export type WishlistItem = {
@@ -24,7 +25,7 @@ export type WishlistGroup = {
 };
 
 export const getWishlistGroups = async (): Promise<WishlistGroup[]> => {
-  const { sql } = getDatabase();
+  const { sql } = getDatabase({ connectionString: env.NETLIFY_DB_URL });
   const rows = await sql<WishlistItem>`
     SELECT
       id,
