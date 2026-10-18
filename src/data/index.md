@@ -34,6 +34,11 @@ components:
         image: /assets/projects/sundial.png
         imageDark: /assets/projects/sundial-dark.png
         href: https://trysundial.ai
+      - title: Difero
+        description: A local browser UI for reviewing Git changes and collecting line comments
+        image: /assets/projects/difero.png
+        imageDark: /assets/projects/difero-dark.png
+        href: https://github.com/VitaliyR/difff
       - title: Stackbit
         description: Easiest way to create your own site with the best tools is Stackbit - first open, complete platform for the Jamstack
         image: /assets/projects/stackbit.png
