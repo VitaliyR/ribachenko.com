@@ -28,6 +28,8 @@
   });
   let url = $derived(new URL(slug, config.baseUrl).toString());
   let logoUrl = $derived(new URL(logoSrc, config.baseUrl).toString());
+  // Default avatar renders as a small thumbnail; only custom page images get the large card
+  let twitterCard = $derived(logoSrc === siteConfig.logo ? 'summary' : 'summary_large_image');
 
   const getLdJson = () => ({
     '@context': 'https://schema.org',
@@ -62,7 +64,7 @@
   <meta name="og:url" content={url} />
   <meta name="og:image" content={logoSrc} />
 
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content={twitterCard} />
   <meta name="twitter:title" content={finalPageTitle} />
   <meta name="twitter:description" content={pageDescription} />
   <meta name="twitter:url" content={url} />
